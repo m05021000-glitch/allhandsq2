@@ -13,10 +13,10 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 .screen.active{display:flex;}
 .topbar{height:7px;flex-shrink:0;}
 .footer{height:30px;flex-shrink:0;background:var(--navy);display:flex;align-items:center;justify-content:flex-end;padding:0 16px;}
-.footer span{font-family:'Share Tech Mono',monospace;font-size:9px;color:#6A8AAE;letter-spacing:2px;}
-.content{flex:1;display:flex;flex-direction:column;padding:14px 36px 10px;min-height:0;overflow:hidden;}
+.footer span{font-family:'Share Tech Mono',monospace;font-size:11px;color:#6A8AAE;letter-spacing:2px;}
+.content{flex:1;display:flex;flex-direction:column;padding:18px 40px 12px;min-height:0;overflow:hidden;}
 #hostbar{position:fixed;bottom:0;left:0;right:0;height:46px;background:rgba(8,18,32,0.97);display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:0 14px;z-index:9999;}
-.btn{background:rgba(255,255,255,0.1);color:#b0c0d8;border:1px solid rgba(255,255,255,0.15);padding:6px 16px;font-family:'Noto Serif TC',serif;font-size:12px;cursor:pointer;border-radius:3px;transition:all 0.15s;white-space:nowrap;}
+.btn{background:rgba(255,255,255,0.1);color:#b0c0d8;border:1px solid rgba(255,255,255,0.15);padding:6px 18px;font-family:'Noto Serif TC',serif;font-size:13px;cursor:pointer;border-radius:3px;transition:all 0.15s;white-space:nowrap;}
 .btn:hover{background:rgba(255,255,255,0.22);color:#fff;}
 .btn.go{background:var(--orange);color:#fff;border-color:var(--orange);font-weight:700;}
 .btn.go:hover{background:#c96e1e;}
@@ -25,57 +25,63 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 .btn.rd{background:var(--red);color:#fff;border-color:var(--red);font-weight:700;}
 .btn.rd:hover{background:#a02222;}
 .btn.hidden{display:none!important;}
-#slide-info{font-family:'Share Tech Mono',monospace;font-size:10px;color:#4A6A8A;margin:0 10px;}
-.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-shrink:0;}
-.sec-title{font-size:clamp(13px,1.6vw,17px);font-weight:700;color:var(--navy);}
-.sec-mono{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;}
+#slide-info{font-family:'Share Tech Mono',monospace;font-size:11px;color:#4A6A8A;margin:0 10px;}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-shrink:0;}
+.sec-title{font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--navy);}
+.sec-mono{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(240,165,0,0.4)}50%{box-shadow:0 0 0 8px rgba(240,165,0,0)}}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
 .screen.active .content{animation:fadeUp 0.3s ease both;}
 #s-cover .content{align-items:center;justify-content:center;text-align:center;}
-.story-card{background:var(--white);border:1px solid var(--border);border-left:6px solid var(--navy);flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:8px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.story-line{display:flex;align-items:center;gap:14px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);font-size:clamp(14px,1.8vw,18px);color:var(--ink);line-height:1.5;}
+
+/* CASE */
+.story-card{background:var(--white);border:1px solid var(--border);border-left:6px solid var(--navy);flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:12px 28px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.story-line{display:flex;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid rgba(0,0,0,0.04);font-size:clamp(17px,2.1vw,22px);color:var(--ink);line-height:1.6;}
 .story-line:last-child{border-bottom:none;font-weight:700;color:var(--navy);}
-.sico{font-size:20px;width:28px;text-align:center;flex-shrink:0;}
+.sico{font-size:24px;width:32px;text-align:center;flex-shrink:0;}
+
+/* INVESTIGATION */
 #s-inv .content{flex-direction:row;gap:18px;}
 .ev-list{width:44%;flex-shrink:0;display:flex;flex-direction:column;gap:8px;}
-.ev-header{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:700;flex-shrink:0;margin-bottom:2px;}
+.ev-header{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--muted);font-weight:700;flex-shrink:0;margin-bottom:2px;}
 .ev-item{background:var(--white);border:2px solid var(--border);display:flex;align-items:stretch;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 6px rgba(0,0,0,0.06);overflow:hidden;position:relative;flex:1;min-height:0;}
 .ev-item:hover:not(.ev-done){border-color:var(--orange);transform:translateY(-1px);box-shadow:0 4px 14px rgba(232,131,42,0.2);}
 .ev-item.ev-open{border-color:var(--green)!important;border-width:2.5px!important;background:#F2FBF6;cursor:default;}
 .ev-item.ev-done{opacity:0.32;cursor:default;pointer-events:none;}
 .ev-item.ev-key{border-color:rgba(240,165,0,0.5);border-width:2px;}
 .ev-item.ev-key:not(.ev-done){animation:pulse 2.5s infinite;}
-.ev-icon-wrap{width:56px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px;background:#F5F2EC;transition:background 0.2s;}
-.ev-info{flex:1;padding:8px 14px;display:flex;flex-direction:column;justify-content:center;gap:2px;}
-.ev-tag{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted);font-weight:700;}
-.ev-name{font-size:clamp(13px,1.5vw,16px);font-weight:700;color:var(--ink);}
-.ev-hint{font-size:clamp(10px,1.1vw,12px);color:var(--muted);line-height:1.4;}
-.ev-done-mark{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--green);}
+.ev-icon-wrap{width:62px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:30px;background:#F5F2EC;}
+.ev-info{flex:1;padding:10px 16px;display:flex;flex-direction:column;justify-content:center;gap:3px;}
+.ev-tag{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700;}
+.ev-name{font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);}
+.ev-hint{font-size:clamp(12px,1.3vw,15px);color:var(--muted);line-height:1.4;}
+.ev-done-mark{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--green);}
 .clue-panel{flex:1;display:flex;flex-direction:column;min-width:0;}
-.clue-header{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:700;flex-shrink:0;margin-bottom:8px;}
-.clue-empty{flex:1;border:2px dashed var(--border);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:clamp(13px,1.5vw,15px);gap:12px;text-align:center;padding:20px;line-height:1.7;}
+.clue-header{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--muted);font-weight:700;flex-shrink:0;margin-bottom:8px;}
+.clue-empty{flex:1;border:2px dashed var(--border);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:clamp(15px,1.8vw,18px);gap:14px;text-align:center;padding:20px;line-height:1.7;}
 .clue-reveal{display:none;flex:1;flex-direction:column;gap:10px;min-height:0;}
 .clue-reveal.show{display:flex;animation:slideIn 0.4s ease both;}
-.ev-type-tag{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--green);flex-shrink:0;}
-.clue-title{font-size:clamp(14px,1.7vw,18px);font-weight:900;color:var(--navy);flex-shrink:0;line-height:1.3;}
-.evidence-card{background:var(--white);border:1px solid var(--border);border-top:6px solid var(--green);padding:15px 20px;flex:1;min-height:0;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.ev-type-tag{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--green);flex-shrink:0;}
+.clue-title{font-size:clamp(16px,2vw,21px);font-weight:900;color:var(--navy);flex-shrink:0;line-height:1.3;}
+.evidence-card{background:var(--white);border:1px solid var(--border);border-top:6px solid var(--green);padding:16px 22px;flex:1;min-height:0;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);font-size:clamp(14px,1.7vw,18px);color:var(--ink);line-height:1.85;}
 .evidence-card.key-evidence{border-top-color:var(--amber);background:#FFFDF5;}
-.key-quote{background:var(--note);border:2px solid var(--noteb);border-left:6px solid var(--amber);padding:12px 16px;font-size:clamp(13px,1.6vw,17px);font-weight:700;color:var(--navy);line-height:1.7;flex-shrink:0;}
+.key-quote{background:var(--note);border:2px solid var(--noteb);border-left:6px solid var(--amber);padding:13px 18px;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--navy);line-height:1.7;flex-shrink:0;}
 .key-quote::before{content:'「';font-size:1.4em;color:var(--amber);margin-right:4px;}
 .key-quote::after{content:'」';font-size:1.4em;color:var(--amber);margin-left:4px;}
-.next-q-box{background:rgba(27,58,92,0.07);border:1px solid rgba(27,58,92,0.15);padding:10px 16px;font-size:clamp(11px,1.3vw,14px);color:var(--navy);font-weight:700;flex-shrink:0;display:flex;align-items:center;gap:8px;}
-.prog-row{display:flex;gap:6px;align-items:center;flex-shrink:0;margin-top:6px;}
-.prog-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted);margin-right:3px;}
-.pdot{width:20px;height:20px;border-radius:50%;background:var(--tan);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;transition:all 0.3s;}
+.next-q-box{background:rgba(27,58,92,0.07);border:1px solid rgba(27,58,92,0.15);padding:11px 18px;font-size:clamp(13px,1.5vw,17px);color:var(--navy);font-weight:700;flex-shrink:0;display:flex;align-items:center;gap:8px;}
+.prog-row{display:flex;gap:8px;align-items:center;flex-shrink:0;margin-top:8px;}
+.prog-lbl{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);margin-right:3px;}
+.pdot{width:22px;height:22px;border-radius:50%;background:var(--tan);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;transition:all 0.3s;}
 .pdot.key-dot{border:2px solid var(--noteb);}
-.why-screen .content{gap:10px;}
-.why-num{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--muted);flex-shrink:0;}
-.why-q{font-size:clamp(18px,2.8vw,32px);font-weight:900;color:var(--navy);flex-shrink:0;line-height:1.25;}
-.why-context{background:rgba(27,58,92,0.06);border-left:4px solid var(--mid);padding:8px 14px;font-size:clamp(11px,1.3vw,14px);color:var(--navy);flex-shrink:0;line-height:1.6;font-style:italic;}
-.opts-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:0;}
+
+/* WHY screens */
+.why-screen .content{gap:12px;}
+.why-num{font-family:'Share Tech Mono',monospace;font-size:13px;letter-spacing:3px;color:var(--muted);flex-shrink:0;}
+.why-q{font-size:clamp(22px,3.2vw,38px);font-weight:900;color:var(--navy);flex-shrink:0;line-height:1.25;}
+.why-context{background:rgba(27,58,92,0.06);border-left:4px solid var(--mid);padding:10px 16px;font-size:clamp(14px,1.6vw,18px);color:var(--navy);flex-shrink:0;line-height:1.7;font-style:italic;}
+.opts-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0;}
 .opt-card{background:var(--white);border:2px solid var(--border);display:flex;align-items:stretch;box-shadow:0 2px 6px rgba(0,0,0,0.05);overflow:hidden;transition:all 0.2s;cursor:pointer;position:relative;}
 .opt-card:hover:not(.voted):not(.locked){border-color:var(--orange);box-shadow:0 4px 12px rgba(232,131,42,0.18);}
 .opt-card.voted{border-color:var(--mid);background:#EEF4FB;}
@@ -83,56 +89,70 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 .opt-card.wrong-shake{animation:shake 0.45s ease;}
 .opt-card.wrong-final{border-color:#ddd!important;background:#f7f7f7;opacity:0.45;}
 .opt-card.locked{cursor:default;}
-.opt-letter{width:54px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:20px;font-weight:bold;color:#fff;transition:background 0.2s;}
-.opt-text{flex:1;padding:10px 16px;font-size:clamp(12px,1.5vw,16px);color:var(--ink);display:flex;align-items:center;line-height:1.5;}
-.vote-count{position:absolute;top:6px;right:8px;font-family:'Share Tech Mono',monospace;font-size:11px;font-weight:bold;color:var(--navy);background:rgba(255,255,255,0.85);border-radius:10px;padding:1px 7px;min-width:22px;text-align:center;border:1px solid rgba(27,58,92,0.15);}
-.vote-bar{position:absolute;bottom:0;left:0;height:3px;background:var(--mid);transition:width 0.3s;opacity:0.5;}
+.opt-letter{width:60px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:22px;font-weight:bold;color:#fff;}
+.opt-text{flex:1;padding:12px 18px;font-size:clamp(14px,1.7vw,19px);color:var(--ink);display:flex;align-items:center;line-height:1.55;}
+.vote-count{position:absolute;top:7px;right:10px;font-family:'Share Tech Mono',monospace;font-size:12px;font-weight:bold;color:var(--navy);background:rgba(255,255,255,0.85);border-radius:10px;padding:2px 8px;min-width:24px;text-align:center;border:1px solid rgba(27,58,92,0.15);}
+.vote-bar{position:absolute;bottom:0;left:0;height:4px;background:var(--mid);transition:width 0.3s;opacity:0.5;}
 .vote-bar.top-vote{background:var(--green);opacity:0.8;}
-.toast{position:fixed;bottom:60px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:700;z-index:99999;pointer-events:none;opacity:0;transition:opacity 0.2s;border-left:4px solid var(--amber);}
+
+/* toast / modal */
+.toast{position:fixed;bottom:60px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:11px 24px;border-radius:6px;font-size:15px;font-weight:700;z-index:99999;pointer-events:none;opacity:0;transition:opacity 0.2s;border-left:4px solid var(--amber);}
 .toast.show{opacity:1;}
 .modal-overlay{display:none;position:absolute;inset:0;background:rgba(0,0,0,0.45);z-index:500;align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
-.modal-box{background:#fff;border-radius:8px;padding:24px 28px;max-width:420px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.2);}
-.modal-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;}
-.modal-body{font-size:13px;color:var(--ink);line-height:1.7;margin-bottom:16px;}
+.modal-box{background:#fff;border-radius:8px;padding:26px 30px;max-width:440px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.2);}
+.modal-title{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.modal-body{font-size:15px;color:var(--ink);line-height:1.75;margin-bottom:18px;}
 .modal-btns{display:flex;gap:8px;justify-content:flex-end;}
-.mbtn{border:1px solid var(--border);background:#fff;padding:7px 18px;border-radius:4px;font-size:13px;cursor:pointer;font-family:'Noto Serif TC',serif;}
+.mbtn{border:1px solid var(--border);background:#fff;padding:8px 20px;border-radius:4px;font-size:14px;cursor:pointer;font-family:'Noto Serif TC',serif;}
 .mbtn.confirm{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:700;}
 .mbtn:hover{opacity:0.82;}
-.why-reveal-card{background:var(--white);border:1px solid var(--border);border-top:6px solid var(--green);padding:15px 20px;flex:1;min-height:0;overflow:hidden;font-size:clamp(12px,1.5vw,15px);color:var(--ink);line-height:1.9;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.why-reaction{background:var(--note);border:1px solid var(--noteb);border-top:4px solid var(--noteb);padding:9px 15px;font-size:clamp(11px,1.3vw,14px);color:var(--ink);font-style:italic;line-height:1.6;flex-shrink:0;display:flex;gap:8px;align-items:flex-start;margin-top:8px;}
-.why-next-hint{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--orange);text-align:right;flex-shrink:0;margin-top:4px;letter-spacing:1px;}
-.funnel{flex:1;display:flex;flex-direction:column;gap:5px;min-height:0;}
-.f-row{display:grid;grid-template-columns:90px 1fr 16px 1fr;gap:5px;align-items:center;flex:1;min-height:0;}
-.f-tag{color:#fff;padding:5px 8px;font-family:'Share Tech Mono',monospace;font-size:9px;font-weight:bold;text-align:center;letter-spacing:1px;display:flex;align-items:center;justify-content:center;height:100%;}
-.f-q{background:#EEF4FB;padding:7px 12px;font-size:clamp(10px,1.3vw,13px);color:var(--ink);display:flex;align-items:center;height:100%;line-height:1.4;}
-.f-a{padding:7px 12px;font-size:clamp(10px,1.3vw,13px);color:var(--ink);border:1px solid var(--border);background:var(--white);display:flex;align-items:center;height:100%;line-height:1.4;}
+
+/* WHY reveal */
+.why-reveal-card{background:var(--white);border:1px solid var(--border);border-top:6px solid var(--green);padding:18px 24px;flex:1;min-height:0;overflow:hidden;font-size:clamp(14px,1.7vw,19px);color:var(--ink);line-height:2;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.why-reaction{background:var(--note);border:1px solid var(--noteb);border-top:4px solid var(--noteb);padding:11px 18px;font-size:clamp(13px,1.5vw,17px);color:var(--ink);font-style:italic;line-height:1.7;flex-shrink:0;display:flex;gap:8px;align-items:flex-start;margin-top:8px;}
+.why-next-hint{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--orange);text-align:right;flex-shrink:0;margin-top:4px;letter-spacing:1px;}
+
+/* FUNNEL */
+.funnel{flex:1;display:flex;flex-direction:column;gap:6px;min-height:0;}
+.f-row{display:grid;grid-template-columns:100px 1fr 20px 1fr;gap:6px;align-items:center;flex:1;min-height:0;}
+.f-tag{color:#fff;padding:6px 8px;font-family:'Share Tech Mono',monospace;font-size:10px;font-weight:bold;text-align:center;letter-spacing:1px;display:flex;align-items:center;justify-content:center;height:100%;}
+.f-q{background:#EEF4FB;padding:9px 14px;font-size:clamp(13px,1.5vw,16px);color:var(--ink);display:flex;align-items:center;height:100%;line-height:1.5;}
+.f-a{padding:9px 14px;font-size:clamp(13px,1.5vw,16px);color:var(--ink);border:1px solid var(--border);background:var(--white);display:flex;align-items:center;height:100%;line-height:1.5;}
 .f-a.key{background:var(--note);border-color:var(--noteb);font-weight:700;}
-.f-arr{text-align:center;color:#bbb;font-size:13px;display:flex;align-items:center;justify-content:center;}
-.verdict-box{background:var(--white);border:1px solid var(--border);border-top:6px solid var(--amber);padding:18px 26px;flex:1;min-height:0;overflow:hidden;font-size:clamp(13px,1.55vw,16px);color:var(--ink);line-height:2;box-shadow:0 2px 8px rgba(0,0,0,0.07);}
+.f-arr{text-align:center;color:#bbb;font-size:15px;display:flex;align-items:center;justify-content:center;}
+
+/* VERDICT */
+.verdict-box{background:var(--white);border:1px solid var(--border);border-top:6px solid var(--amber);padding:22px 30px;flex:1;min-height:0;overflow:hidden;font-size:clamp(16px,1.9vw,21px);color:var(--ink);line-height:2.1;box-shadow:0 2px 8px rgba(0,0,0,0.07);}
 .verdict-box strong{color:var(--orange);font-weight:900;}
-.teach-def{background:var(--note);border:1px solid var(--noteb);border-left:6px solid var(--noteb);padding:12px 18px;flex-shrink:0;margin-bottom:10px;font-size:clamp(12px,1.5vw,15px);line-height:1.8;color:var(--ink);}
-.three-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;min-height:0;}
-.role-card{background:var(--white);border:1px solid var(--border);border-top:5px solid var(--teal);padding:14px;display:flex;flex-direction:column;}
-.role-icon{font-size:26px;text-align:center;margin-bottom:4px;}
-.role-name{font-size:clamp(14px,1.6vw,17px);font-weight:700;color:var(--navy);text-align:center;margin-bottom:8px;}
-.rrow{border-radius:3px;padding:6px 10px;margin-bottom:6px;font-size:clamp(11px,1.2vw,13px);line-height:1.5;}
+
+/* TEACH */
+.teach-def{background:var(--note);border:1px solid var(--noteb);border-left:6px solid var(--noteb);padding:14px 20px;flex-shrink:0;margin-bottom:12px;font-size:clamp(15px,1.7vw,19px);line-height:1.85;color:var(--ink);}
+.three-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;min-height:0;}
+.role-card{background:var(--white);border:1px solid var(--border);border-top:5px solid var(--teal);padding:16px;display:flex;flex-direction:column;}
+.role-icon{font-size:30px;text-align:center;margin-bottom:6px;}
+.role-name{font-size:clamp(16px,1.9vw,20px);font-weight:700;color:var(--navy);text-align:center;margin-bottom:10px;}
+.rrow{border-radius:3px;padding:8px 12px;margin-bottom:7px;font-size:clamp(13px,1.4vw,16px);line-height:1.6;}
 .rk{background:var(--paper);color:var(--teal);font-weight:700;}
 .rdk{background:#FFF5F5;color:var(--red);}
-.rlbl{font-size:9px;opacity:0.75;display:block;margin-bottom:1px;}
-.conv-quote{background:var(--navy);border-left:7px solid var(--amber);padding:18px 26px;flex-shrink:0;margin-bottom:12px;font-size:clamp(14px,1.9vw,19px);color:#e8e8f0;line-height:1.9;}
+.rlbl{font-size:10px;opacity:0.75;display:block;margin-bottom:1px;}
+
+/* CONVERGE */
+.conv-quote{background:var(--navy);border-left:7px solid var(--amber);padding:20px 28px;flex-shrink:0;margin-bottom:14px;font-size:clamp(16px,2.1vw,22px);color:#e8e8f0;line-height:1.95;}
 .conv-quote strong{color:var(--amber);}
-.conv-sub{font-size:clamp(12px,1.4vw,14px);color:#b0c4d8;margin-top:10px;line-height:1.8;}
-.three-conv{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;min-height:0;}
+.conv-sub{font-size:clamp(14px,1.6vw,17px);color:#b0c4d8;margin-top:10px;line-height:1.8;}
+.three-conv{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;min-height:0;}
 .conv-card{background:var(--white);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;}
-.conv-head{padding:10px 14px;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;}
-.conv-body{padding:12px 14px;font-size:clamp(11px,1.3vw,13px);color:#4A4A4A;line-height:1.8;flex:1;}
+.conv-head{padding:12px 16px;font-size:15px;font-weight:700;color:#fff;flex-shrink:0;}
+.conv-body{padding:14px 16px;font-size:clamp(13px,1.5vw,16px);color:#4A4A4A;line-height:1.9;flex:1;}
+
+/* CLOSING */
 #s-closing .content{background:var(--navy);}
-.close-title{font-size:clamp(28px,5vw,54px);font-weight:900;color:#fff;}
-.close-sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:#7A9ABE;letter-spacing:4px;margin-bottom:16px;}
-.close-box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-left:4px solid var(--orange);padding:12px 18px;margin-bottom:8px;}
-.close-bt{font-size:13px;font-weight:700;color:var(--amber);margin-bottom:2px;}
-.close-bd{font-size:12px;color:#7A9ABE;line-height:1.6;}
+.close-title{font-size:clamp(32px,5.5vw,60px);font-weight:900;color:#fff;}
+.close-sub{font-family:'Share Tech Mono',monospace;font-size:12px;color:#7A9ABE;letter-spacing:4px;margin-bottom:18px;}
+.close-box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-left:4px solid var(--orange);padding:14px 20px;margin-bottom:10px;}
+.close-bt{font-size:15px;font-weight:700;color:var(--amber);margin-bottom:4px;}
+.close-bd{font-size:14px;color:#7A9ABE;line-height:1.7;}
 </style>
 </head>
 <body>
@@ -140,8 +160,8 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 <div id="s-cover" class="screen">
   <div class="topbar" style="background:var(--orange)"></div>
   <div class="content">
-    <span style="font-size:clamp(56px,9vw,96px);display:block;margin-bottom:12px;">🔍</span>
-    <div style="font-size:clamp(44px,9vw,92px);font-weight:900;color:var(--navy);line-height:1.05;">案件偵查室</div>
+    <span style="font-size:clamp(64px,10vw,108px);display:block;margin-bottom:16px;">🔍</span>
+    <div style="font-size:clamp(52px,10vw,104px);font-weight:900;color:var(--navy);line-height:1.05;">案件偵查室</div>
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
@@ -150,7 +170,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
   <div class="topbar" style="background:var(--navy)"></div>
   <div class="content">
     <div class="sec-head"><span class="sec-title">🗂️ 案件檔案</span></div>
-    <div style="display:flex;gap:14px;flex:1;min-height:0;">
+    <div style="display:flex;gap:16px;flex:1;min-height:0;">
       <div class="story-card">
         <div class="story-line"><span class="sico">📦</span><span>A倉因業務需求，把貨物連同棧板送往B倉。A倉因此棧板不足，向棧板公司提出需求。</span></div>
         <div class="story-line"><span class="sico">🚛</span><span>棧板公司發現庫存不足，找上棧板量最多的B倉商量，請B倉把棧板送回A倉。</span></div>
@@ -158,10 +178,10 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
         <div class="story-line"><span class="sico">👏</span><span>問題解決了！但是...總覺得哪裡怪怪的</span></div>
       </div>
       <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-        <div style="width:76px;height:76px;border-radius:50%;border:3px solid var(--orange);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:12px;font-weight:bold;color:var(--orange);background:var(--cream);">CASE<br>#01</div>
+        <div style="width:84px;height:84px;border-radius:50%;border:3px solid var(--orange);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:13px;font-weight:bold;color:var(--orange);background:var(--cream);">CASE<br>#01</div>
       </div>
     </div>
-    <div style="background:rgba(240,165,0,0.13);border:2px solid var(--amber);padding:10px 20px;margin-top:10px;font-size:clamp(14px,1.8vw,18px);font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px;flex-shrink:0;">
+    <div style="background:rgba(240,165,0,0.13);border:2px solid var(--amber);padding:13px 22px;margin-top:12px;font-size:clamp(17px,2.1vw,22px);font-weight:700;color:var(--navy);display:flex;align-items:center;gap:12px;flex-shrink:0;">
       <span>🔍</span><span>偵探出動——先調查哪個人證或物證？</span>
     </div>
   </div>
@@ -201,7 +221,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
     </div>
     <div class="clue-panel">
       <div class="clue-header">📌 偵查結果</div>
-      <div class="clue-empty" id="clue-empty"><span style="font-size:40px;">🗂️</span><span>選擇人證或物證<br>偵探深思後才行動<br><br><span style="font-size:12px;color:var(--border);">✋ 員工多數決，主持人點選</span></span></div>
+      <div class="clue-empty" id="clue-empty"><span style="font-size:44px;">🗂️</span><span>選擇人證或物證<br>偵探深思後才行動<br><br><span style="font-size:13px;color:var(--border);">✋ 員工多數決，主持人點選</span></span></div>
       <div class="clue-reveal" id="clue-reveal">
         <div class="ev-type-tag" id="cr-type"></div>
         <div class="clue-title" id="cr-title"></div>
@@ -223,7 +243,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
   <div class="content">
     <div class="sec-head"><span class="sec-title">🎯 五真因完整還原</span><span class="sec-mono">WHY 1 → WHY 5</span></div>
     <div class="funnel" id="funnel-main"></div>
-    <div style="background:var(--navy);color:#fff;padding:12px 24px;text-align:center;font-size:clamp(13px,1.5vw,15px);font-weight:700;letter-spacing:1px;flex-shrink:0;margin-top:8px;">找到正確的人、事、物與流程——問題才能真正被解決。🔍</div>
+    <div style="background:var(--navy);color:#fff;padding:14px 26px;text-align:center;font-size:clamp(15px,1.8vw,19px);font-weight:700;letter-spacing:1px;flex-shrink:0;margin-top:10px;">找到正確的人、事、物與流程——問題才能真正被解決。🔍</div>
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
@@ -232,9 +252,9 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
   <div class="topbar" style="background:var(--amber)"></div>
   <div class="content">
     <div class="sec-head"><span class="sec-title">⚖️ 案件核心還原</span></div>
-    <div style="font-size:clamp(20px,3vw,34px);font-weight:900;color:var(--navy);margin-bottom:12px;flex-shrink:0;">有誰做錯事了嗎？</div>
+    <div style="font-size:clamp(24px,3.5vw,40px);font-weight:900;color:var(--navy);margin-bottom:14px;flex-shrink:0;">有誰做錯事了嗎？</div>
     <div class="verdict-box"><strong>沒有。</strong>A倉配合營運送出棧板、B倉配合將棧板送回還承擔了費用、棧板公司庫存不足找了B倉協商。大家都互相體諒、理解彼此的需求，確實地解決了眼前的問題——三方都沒有錯。<br><br>但有一件事，三方都不知道：<strong>合作協議書明載，補板費用已包含在租賃費裡。</strong><br>原來——B倉這次出的錢，本來不該是它出的。<br><br>這就是<strong>合作關係中存在的資訊差</strong>：每個人都用自己知道的資訊做決定，但沒有人掌握完整的全貌。</div>
-    <div style="background:var(--navy);color:#fff;padding:12px 24px;text-align:center;font-size:clamp(13px,1.5vw,15px);font-weight:700;letter-spacing:1px;flex-shrink:0;margin-top:10px;">找到正確的人、事、物與流程——問題才能真正被解決。🔍</div>
+    <div style="background:var(--navy);color:#fff;padding:14px 26px;text-align:center;font-size:clamp(15px,1.8vw,19px);font-weight:700;letter-spacing:1px;flex-shrink:0;margin-top:12px;">找到正確的人、事、物與流程——問題才能真正被解決。🔍</div>
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
@@ -244,13 +264,13 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
   <div class="content">
     <div class="sec-head"><span class="sec-title">🔍 偵探課 01 · 資訊差</span></div>
     <div class="teach-def">📌 同一件事，不同的人掌握的資訊不一樣，導致各自做出了「在自己的認知裡完全合理」的決定，但整體結果卻不是最好的。</div>
-    <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);margin-bottom:10px;flex-shrink:0;">剛才我們訪談的三位，就是資訊差的完整示範 👆</div>
+    <div style="font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--navy);margin-bottom:12px;flex-shrink:0;">剛才我們訪談的三位，就是資訊差的完整示範 👆</div>
     <div class="three-grid">
       <div class="role-card"><div class="role-icon">👩‍💼</div><div class="role-name">A 倉</div><div class="rrow rk"><span class="rlbl">💡 知道</span>自己需要補棧板</div><div class="rrow rdk"><span class="rlbl">❓ 不知道</span>合作協議書的補板條款</div></div>
       <div class="role-card"><div class="role-icon">🚛</div><div class="role-name">棧板公司</div><div class="rrow rk"><span class="rlbl">💡 知道</span>B倉有棧板可調度</div><div class="rrow rdk"><span class="rlbl">❓ 不知道</span>補板費用是自己協議書裡的責任</div></div>
       <div class="role-card"><div class="role-icon">🏢</div><div class="role-name">B 倉</div><div class="rrow rk"><span class="rlbl">💡 知道</span>被請求協調，積極配合</div><div class="rrow rdk"><span class="rlbl">❓ 不知道</span>這筆費用本來不該它出</div></div>
     </div>
-    <div style="background:var(--teal);color:#fff;padding:10px 20px;text-align:center;font-size:clamp(12px,1.4vw,14px);font-weight:700;margin-top:8px;flex-shrink:0;">→ 三方都沒有錯，但三方都只有部分的資訊。</div>
+    <div style="background:var(--teal);color:#fff;padding:12px 22px;text-align:center;font-size:clamp(14px,1.6vw,18px);font-weight:700;margin-top:10px;flex-shrink:0;">→ 三方都沒有錯，但三方都只有部分的資訊。</div>
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
@@ -262,53 +282,39 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
       <span class="sec-title">🔍 偵探課 02 · 五真因法（5 Whys）怎麼用？</span>
       <span class="sec-mono">TOOL GUIDE</span>
     </div>
-
-    <div class="teach-def" style="margin-bottom:12px;">
+    <div class="teach-def" style="margin-bottom:14px;">
       📌 遇到問題，別急著解決表面症狀。連問五個「為什麼」，每一層都把上一層的答案當成新問題繼續追——直到找到<strong>真正能解決問題的根本原因</strong>。
     </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:0;">
-
-      <!-- Step 1 -->
-      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--navy);padding:12px 16px;display:flex;flex-direction:column;gap:6px;">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 01</div>
-        <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);">📍 描述問題現象</div>
-        <div style="font-size:clamp(11px,1.3vw,13px);color:var(--ink);line-height:1.7;">用一句話說清楚「發生了什麼事」。不要帶入原因，只描述看到的結果。<br><span style="color:var(--muted);font-style:italic;">例：B倉承擔了不該由它出的補板費用。</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0;">
+      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--navy);padding:14px 18px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 01</div>
+        <div style="font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--navy);">📍 描述問題現象</div>
+        <div style="font-size:clamp(13px,1.5vw,17px);color:var(--ink);line-height:1.75;">用一句話說清楚「發生了什麼事」。不要帶入原因，只描述看到的結果。<br><span style="color:var(--muted);font-style:italic;">例：B倉承擔了不該由它出的補板費用。</span></div>
       </div>
-
-      <!-- Step 2 -->
-      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--mid);padding:12px 16px;display:flex;flex-direction:column;gap:6px;">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 02</div>
-        <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);">❓ 連問五個「為什麼」</div>
-        <div style="font-size:clamp(11px,1.3vw,13px);color:var(--ink);line-height:1.7;">把上一層的答案當作下一個問題的起點，不斷往下追。<strong>不要跳層</strong>——每一層都要有實際根據，不是猜測。</div>
+      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--mid);padding:14px 18px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 02</div>
+        <div style="font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--navy);">❓ 連問五個「為什麼」</div>
+        <div style="font-size:clamp(13px,1.5vw,17px);color:var(--ink);line-height:1.75;">把上一層的答案當作下一個問題的起點，不斷往下追。<strong>不要跳層</strong>——每一層都要有實際根據，不是猜測。</div>
       </div>
-
-      <!-- Step 3 -->
-      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--orange);padding:12px 16px;display:flex;flex-direction:column;gap:6px;">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 03</div>
-        <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);">🎯 確認根因可被解決</div>
-        <div style="font-size:clamp(11px,1.3vw,13px);color:var(--ink);line-height:1.7;">問到的根因，要是<strong>我們有能力改變的事</strong>。如果答案是「人性」或「老天爺」，繼續往更具體的方向追。</div>
+      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--orange);padding:14px 18px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 03</div>
+        <div style="font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--navy);">🎯 確認根因可被解決</div>
+        <div style="font-size:clamp(13px,1.5vw,17px);color:var(--ink);line-height:1.75;">問到的根因，要是<strong>我們有能力改變的事</strong>。如果答案是「人性」或「老天爺」，繼續往更具體的方向追。</div>
       </div>
-
-      <!-- Step 4 -->
-      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--teal);padding:12px 16px;display:flex;flex-direction:column;gap:6px;">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 04</div>
-        <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);">🛠️ 針對根因擬定對策</div>
-        <div style="font-size:clamp(11px,1.3vw,13px);color:var(--ink);line-height:1.7;">解決方案要對準根因，不是貼在表面症狀上。問自己：<strong>「解決這個，問題以後還會再發生嗎？」</strong>若不會，才是對的方向。</div>
+      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--teal);padding:14px 18px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 04</div>
+        <div style="font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--navy);">🛠️ 針對根因擬定對策</div>
+        <div style="font-size:clamp(13px,1.5vw,17px);color:var(--ink);line-height:1.75;">解決方案要對準根因，不是貼在表面症狀上。問自己：<strong>「解決這個，問題以後還會再發生嗎？」</strong>若不會，才是對的方向。</div>
       </div>
-
     </div>
-
-    <!-- 底部注意事項 -->
-    <div style="display:flex;gap:10px;margin-top:10px;flex-shrink:0;">
-      <div style="flex:1;background:rgba(232,131,42,0.1);border:1px solid rgba(232,131,42,0.3);padding:8px 14px;font-size:clamp(10px,1.2vw,12px);color:var(--ink);line-height:1.6;">
+    <div style="display:flex;gap:12px;margin-top:12px;flex-shrink:0;">
+      <div style="flex:1;background:rgba(232,131,42,0.1);border:1px solid rgba(232,131,42,0.3);padding:10px 16px;font-size:clamp(12px,1.4vw,15px);color:var(--ink);line-height:1.7;">
         ⚠️ <strong>常見地雷：</strong>把「有人沒做好」當根因 → 真正的根因通常是<em>流程、資訊、制度</em>層面的缺口，不是某個人的問題。
       </div>
-      <div style="flex:1;background:rgba(42,122,90,0.1);border:1px solid rgba(42,122,90,0.3);padding:8px 14px;font-size:clamp(10px,1.2vw,12px);color:var(--ink);line-height:1.6;">
+      <div style="flex:1;background:rgba(42,122,90,0.1);border:1px solid rgba(42,122,90,0.3);padding:10px 16px;font-size:clamp(12px,1.4vw,15px);color:var(--ink);line-height:1.7;">
         ✅ <strong>好的根因長這樣：</strong>具體、可操作、能用 SOP / 制度 / 職責分工來解決——而不是靠個人記性或善意。
       </div>
     </div>
-
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
@@ -330,7 +336,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 <div id="s-closing" class="screen">
   <div class="topbar" style="background:var(--orange)"></div>
   <div class="content" style="background:var(--navy);">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-shrink:0;"><span style="font-size:clamp(38px,6vw,60px);">🕵️</span><div><div class="close-title">結語</div><div class="close-sub">CLOSING REMARKS</div></div></div>
+    <div style="display:flex;align-items:center;gap:18px;margin-bottom:16px;flex-shrink:0;"><span style="font-size:clamp(44px,7vw,68px);">🕵️</span><div><div class="close-title">結語</div><div class="close-sub">CLOSING REMARKS</div></div></div>
     <div class="close-box"><div class="close-bt">🔍 核心啟發</div><div class="close-bd">行動前先想想五個為什麼、注意資訊差、將流程標準化(SOP)</div></div>
     <div class="close-box"><div class="close-bt" style="color:var(--orange)">🗺️ 下一步行動</div><div class="close-bd">我們接下來會怎麼把它變成制度</div></div>
     <div class="close-box"><div class="close-bt" style="color:var(--amber)">💬 給大家的話</div><div class="close-bd">對所有同仁主動思考的肯定與期許</div></div>
@@ -352,9 +358,9 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 const EVIDENCE=[
   {type:"👩‍💼 人證 01",name:"A倉同仁訪談",icon:"👩‍💼",color:"#1B3A5C",body:"A倉依照公司要求把貨物連同棧板一起送往B倉。這是倉庫之間的標準作業。<br><br>A倉棧板不足後，立刻聯絡棧板公司提出補板需求。",quote:"我們就是照流程做，貨到B倉，棧板也跟著去了。不夠用就找棧板公司，不是一直都這樣嗎？",nextq:"那棧板公司接到需求之後，怎麼處理的？"},
   {type:"🚛 人證 02",name:"棧板公司業務代表訪談",icon:"🚛",color:"#2E5F8A",body:"棧板公司接到A倉的補板需求後，確認自己的庫存不足，無法直接補給。<br><br>B倉目前持有最多棧板，所以棧板公司聯絡B倉，請B倉協助把棧板調回A倉。",quote:"我們庫存不夠，B倉有最多板，就叫他們調回去啊。以前都是這樣處理的，這是慣例。",nextq:"B倉接到這個請求，怎麼回應？費用又是怎麼算的？"},
-  {type:"🏢 人證 03",name:"B倉同仁訪談",icon:"🏢",color:"#1A9E8F",body:"B倉接到棧板公司的請求，確實A倉的棧板都在這裡，B倉二話不說配合把棧板送回A倉，送回去的費用就由B倉吸收。<br><br>",quote:"我們確實收到了來自A倉的貨跟棧板，所以就在收到需求的同時把棧板送回去，可能是使用者付費？",nextq:"這筆費用有沒有經過正式的預算編列流程？"},
-  {type:"📊 物證 01",name:"預算編列紀錄",icon:"📊",color:"#E8832A",body:"調閱預算編列紀錄後發現：這筆費用<strong>沒有經過任何正式的預算編列或費用歸屬確認流程</strong>。<br><br>",quote:"費用直接由B倉吸收，既無核准記錄，也無責任歸屬審核。",nextq:"費用歸屬好像不太清楚——那合作協議書裡，有沒有規定這件事？"},
-  {type:"📋 物證 02 🔑",name:"合作協議書",icon:"📋",color:"#E8C840",isKey:true,body:"合作協議書寫著：<strong>租賃費用已包含補板成本；當合作的倉庫棧板數量不足時，將由棧板公司負責執行補板與承擔成本。",quote:"每個月付的租賃費，補板這件事早就算進去了。那麼，B倉這次出的費用，究竟是？",nextq:"協議書有寫清楚，為什麼三方都不知道？為什麼沒有人去查過這份文件？"},
+  {type:"🏢 人證 03",name:"B倉同仁訪談",icon:"🏢",color:"#1A9E8F",body:"B倉接到棧板公司的請求，確實A倉的棧板都在這裡，B倉二話不說配合把棧板送回A倉，送回去的費用就由B倉吸收。",quote:"我們確實收到了來自A倉的貨跟棧板，所以就在收到需求的同時把棧板送回去，可能是使用者付費？",nextq:"這筆費用有沒有經過正式的預算編列流程？"},
+  {type:"📊 物證 01",name:"預算編列紀錄",icon:"📊",color:"#E8832A",body:"調閱預算編列紀錄後發現：這筆費用<strong>沒有經過任何正式的預算編列或費用歸屬確認流程</strong>。",quote:"費用直接由B倉吸收，既無核准記錄，也無責任歸屬審核。",nextq:"費用歸屬好像不太清楚——那合作協議書裡，有沒有規定這件事？"},
+  {type:"📋 物證 02 🔑",name:"合作協議書",icon:"📋",color:"#E8C840",isKey:true,body:"合作協議書寫著：<strong>租賃費用已包含補板成本；當合作的倉庫棧板數量不足時，將由棧板公司負責執行補板與承擔成本。</strong>",quote:"每個月付的租賃費，補板這件事早就算進去了。那麼，B倉這次出的費用，究竟是？",nextq:"協議書有寫清楚，為什麼三方都不知道？為什麼沒有人去查過這份文件？"},
 ];
 
 const WHYS_DATA=[
@@ -412,7 +418,7 @@ function buildWhyScreens(){
               <div class="vote-bar" id="vb-${idx}-${o.l}" style="width:0%"></div>
             </div>`).join('')}
         </div>
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted);margin-top:6px;text-align:right;flex-shrink:0;" id="vote-total-${idx}">投票數：0　　主持人：確認最高票後按右下角「確認送出」</div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);margin-top:8px;text-align:right;flex-shrink:0;" id="vote-total-${idx}">投票數：0　　主持人：確認最高票後按右下角「確認送出」</div>
         <div class="modal-overlay" id="modal-${idx}">
           <div class="modal-box">
             <div class="modal-title" id="modal-title-${idx}"></div>
@@ -437,7 +443,7 @@ function buildWhyScreens(){
           <span class="why-num" style="color:var(--green)">✅ ${w.num} · 答案：${w.ans}</span>
           <span class="sec-mono">${idx+1} / 5</span>
         </div>
-        <div style="font-size:clamp(12px,1.4vw,15px);color:var(--muted);font-style:italic;flex-shrink:0;margin-bottom:8px;">${w.q}</div>
+        <div style="font-size:clamp(14px,1.6vw,18px);color:var(--muted);font-style:italic;flex-shrink:0;margin-bottom:10px;">${w.q}</div>
         <div class="why-reveal-card">${w.reveal}</div>
         <div class="why-reaction"><span>💬</span><span>${w.reaction}</span></div>
         ${w.next?`<div class="why-next-hint">${w.next}</div>`:''}
@@ -511,9 +517,7 @@ function confirmVote(){
   }
 }
 
-function closeModal(wIdx){
-  document.getElementById(`modal-${wIdx}`).classList.remove('show');
-}
+function closeModal(wIdx){document.getElementById(`modal-${wIdx}`).classList.remove('show');}
 
 function doConfirm(wIdx){
   closeModal(wIdx);
@@ -567,7 +571,7 @@ function openEvidence(idx){
   setTimeout(()=>{el.classList.remove('ev-open');el.classList.add('ev-done');},700);
   document.getElementById(`em-${idx}`).textContent='✓';
   const pd=document.getElementById(`pd-${evDotIdx}`);
-  if(pd){pd.style.background=dotColors[idx];pd.textContent='✓';pd.style.fontSize='11px';}
+  if(pd){pd.style.background=dotColors[idx];pd.textContent='✓';pd.style.fontSize='12px';}
   evDotIdx++;
   if(evDone.size===EVIDENCE.length){
     document.getElementById('btn-all-done').classList.remove('hidden');
@@ -575,16 +579,12 @@ function openEvidence(idx){
   }
 }
 
-function goWhys(){
-  cur=SCREENS.indexOf('s-why-0-vote');
-  show(cur);
-}
+function goWhys(){cur=SCREENS.indexOf('s-why-0-vote');show(cur);}
 
 let toastTimer=null;
 function showToast(msg,dur=2000){
   const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.classList.add('show');
+  t.textContent=msg;t.classList.add('show');
   if(toastTimer) clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>t.classList.remove('show'),dur);
 }
@@ -595,9 +595,7 @@ function buildScreenList(){
   return all;
 }
 
-let SCREENS=[];
-let cur=0;
-
+let SCREENS=[],cur=0;
 setTimeout(()=>{SCREENS=buildScreenList();show(0);},0);
 
 function show(idx){
