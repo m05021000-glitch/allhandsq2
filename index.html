@@ -6,37 +6,15 @@
 <title>案件偵查室</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Share+Tech+Mono&display=swap');
-
-:root {
-  --navy:   #1B3A5C;
-  --mid:    #2E5F8A;
-  --paper:  #FAF7F2;
-  --cream:  #FDF9F0;
-  --orange: #E8832A;
-  --amber:  #F0A500;
-  --teal:   #1A9E8F;
-  --white:  #FFFFFF;
-  --ink:    #2C2C2C;
-  --muted:  #999;
-  --border: #DEDBD4;
-  --green:  #2A7A5A;
-  --red:    #C0392B;
-  --note:   #FFF8DC;
-  --noteb:  #E8C840;
-  --tan:    #E8E0D0;
-}
-
+:root{--navy:#1B3A5C;--mid:#2E5F8A;--paper:#FAF7F2;--cream:#FDF9F0;--orange:#E8832A;--amber:#F0A500;--teal:#1A9E8F;--white:#FFFFFF;--ink:#2C2C2C;--muted:#999;--border:#DEDBD4;--green:#2A7A5A;--red:#C0392B;--note:#FFF8DC;--noteb:#E8C840;--tan:#E8E0D0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-family:'Noto Serif TC',serif;user-select:none;}
-
 .screen{display:none;position:absolute;inset:0;flex-direction:column;}
 .screen.active{display:flex;}
 .topbar{height:7px;flex-shrink:0;}
 .footer{height:30px;flex-shrink:0;background:var(--navy);display:flex;align-items:center;justify-content:flex-end;padding:0 16px;}
 .footer span{font-family:'Share Tech Mono',monospace;font-size:9px;color:#6A8AAE;letter-spacing:2px;}
 .content{flex:1;display:flex;flex-direction:column;padding:14px 36px 10px;min-height:0;overflow:hidden;}
-
-/* HOST BAR */
 #hostbar{position:fixed;bottom:0;left:0;right:0;height:46px;background:rgba(8,18,32,0.97);display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:0 14px;z-index:9999;}
 .btn{background:rgba(255,255,255,0.1);color:#b0c0d8;border:1px solid rgba(255,255,255,0.15);padding:6px 16px;font-family:'Noto Serif TC',serif;font-size:12px;cursor:pointer;border-radius:3px;transition:all 0.15s;white-space:nowrap;}
 .btn:hover{background:rgba(255,255,255,0.22);color:#fff;}
@@ -48,93 +26,82 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 .btn.rd:hover{background:#a02222;}
 .btn.hidden{display:none!important;}
 #slide-info{font-family:'Share Tech Mono',monospace;font-size:10px;color:#4A6A8A;margin:0 10px;}
-
 .sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-shrink:0;}
 .sec-title{font-size:clamp(13px,1.6vw,17px);font-weight:700;color:var(--navy);}
 .sec-mono{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;}
-
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(240,165,0,0.4)}50%{box-shadow:0 0 0 8px rgba(240,165,0,0)}}
-
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
 .screen.active .content{animation:fadeUp 0.3s ease both;}
-
-/* ══ COVER ══ */
 #s-cover .content{align-items:center;justify-content:center;text-align:center;}
-
-/* ══ CASE ══ */
 .story-card{background:var(--white);border:1px solid var(--border);border-left:6px solid var(--navy);flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:8px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
 .story-line{display:flex;align-items:center;gap:14px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);font-size:clamp(14px,1.8vw,18px);color:var(--ink);line-height:1.5;}
 .story-line:last-child{border-bottom:none;font-weight:700;color:var(--navy);}
 .sico{font-size:20px;width:28px;text-align:center;flex-shrink:0;}
-
-/* ══ INVESTIGATION ══ */
 #s-inv .content{flex-direction:row;gap:18px;}
-
-/* Left: evidence/witness list */
 .ev-list{width:44%;flex-shrink:0;display:flex;flex-direction:column;gap:8px;}
 .ev-header{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:700;flex-shrink:0;margin-bottom:2px;}
-
 .ev-item{background:var(--white);border:2px solid var(--border);display:flex;align-items:stretch;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 6px rgba(0,0,0,0.06);overflow:hidden;position:relative;flex:1;min-height:0;}
 .ev-item:hover:not(.ev-done){border-color:var(--orange);transform:translateY(-1px);box-shadow:0 4px 14px rgba(232,131,42,0.2);}
 .ev-item.ev-open{border-color:var(--green)!important;border-width:2.5px!important;background:#F2FBF6;cursor:default;}
 .ev-item.ev-done{opacity:0.32;cursor:default;pointer-events:none;}
 .ev-item.ev-key{border-color:rgba(240,165,0,0.5);border-width:2px;}
 .ev-item.ev-key:not(.ev-done){animation:pulse 2.5s infinite;}
-
 .ev-icon-wrap{width:56px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px;background:#F5F2EC;transition:background 0.2s;}
 .ev-info{flex:1;padding:8px 14px;display:flex;flex-direction:column;justify-content:center;gap:2px;}
 .ev-tag{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted);font-weight:700;}
 .ev-name{font-size:clamp(13px,1.5vw,16px);font-weight:700;color:var(--ink);}
 .ev-hint{font-size:clamp(10px,1.1vw,12px);color:var(--muted);line-height:1.4;}
 .ev-done-mark{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--green);}
-
-/* Right: clue reveal */
 .clue-panel{flex:1;display:flex;flex-direction:column;min-width:0;}
 .clue-header{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:700;flex-shrink:0;margin-bottom:8px;}
-
 .clue-empty{flex:1;border:2px dashed var(--border);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:clamp(13px,1.5vw,15px);gap:12px;text-align:center;padding:20px;line-height:1.7;}
-
 .clue-reveal{display:none;flex:1;flex-direction:column;gap:10px;min-height:0;}
 .clue-reveal.show{display:flex;animation:slideIn 0.4s ease both;}
-
 .ev-type-tag{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--green);flex-shrink:0;}
 .clue-title{font-size:clamp(14px,1.7vw,18px);font-weight:900;color:var(--navy);flex-shrink:0;line-height:1.3;}
-
 .evidence-card{background:var(--white);border:1px solid var(--border);border-top:6px solid var(--green);padding:15px 20px;flex:1;min-height:0;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
 .evidence-card.key-evidence{border-top-color:var(--amber);background:#FFFDF5;}
-
 .key-quote{background:var(--note);border:2px solid var(--noteb);border-left:6px solid var(--amber);padding:12px 16px;font-size:clamp(13px,1.6vw,17px);font-weight:700;color:var(--navy);line-height:1.7;flex-shrink:0;}
 .key-quote::before{content:'「';font-size:1.4em;color:var(--amber);margin-right:4px;}
 .key-quote::after{content:'」';font-size:1.4em;color:var(--amber);margin-left:4px;}
-
 .next-q-box{background:rgba(27,58,92,0.07);border:1px solid rgba(27,58,92,0.15);padding:10px 16px;font-size:clamp(11px,1.3vw,14px);color:var(--navy);font-weight:700;flex-shrink:0;display:flex;align-items:center;gap:8px;}
-
-/* Progress */
 .prog-row{display:flex;gap:6px;align-items:center;flex-shrink:0;margin-top:6px;}
 .prog-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted);margin-right:3px;}
 .pdot{width:20px;height:20px;border-radius:50%;background:var(--tan);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;transition:all 0.3s;}
 .pdot.key-dot{border:2px solid var(--noteb);}
-
-/* ══ WHY SCREENS ══ */
 .why-screen .content{gap:10px;}
 .why-num{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--muted);flex-shrink:0;}
 .why-q{font-size:clamp(18px,2.8vw,32px);font-weight:900;color:var(--navy);flex-shrink:0;line-height:1.25;}
 .why-context{background:rgba(27,58,92,0.06);border-left:4px solid var(--mid);padding:8px 14px;font-size:clamp(11px,1.3vw,14px);color:var(--navy);flex-shrink:0;line-height:1.6;font-style:italic;}
-
 .opts-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:0;}
-.opt-card{background:var(--white);border:2px solid var(--border);display:flex;align-items:stretch;box-shadow:0 2px 6px rgba(0,0,0,0.05);overflow:hidden;transition:all 0.35s;}
+.opt-card{background:var(--white);border:2px solid var(--border);display:flex;align-items:stretch;box-shadow:0 2px 6px rgba(0,0,0,0.05);overflow:hidden;transition:all 0.2s;cursor:pointer;position:relative;}
+.opt-card:hover:not(.voted):not(.locked){border-color:var(--orange);box-shadow:0 4px 12px rgba(232,131,42,0.18);}
+.opt-card.voted{border-color:var(--mid);background:#EEF4FB;}
 .opt-card.correct{border-color:var(--green)!important;border-width:2.5px!important;background:#F0FBF6;}
-.opt-card.dim{opacity:0.25;}
-.opt-letter{width:54px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:20px;font-weight:bold;color:#fff;}
+.opt-card.wrong-shake{animation:shake 0.45s ease;}
+.opt-card.wrong-final{border-color:#ddd!important;background:#f7f7f7;opacity:0.45;}
+.opt-card.locked{cursor:default;}
+.opt-letter{width:54px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:20px;font-weight:bold;color:#fff;transition:background 0.2s;}
 .opt-text{flex:1;padding:10px 16px;font-size:clamp(12px,1.5vw,16px);color:var(--ink);display:flex;align-items:center;line-height:1.5;}
-
-/* WHY reveal */
+.vote-count{position:absolute;top:6px;right:8px;font-family:'Share Tech Mono',monospace;font-size:11px;font-weight:bold;color:var(--navy);background:rgba(255,255,255,0.85);border-radius:10px;padding:1px 7px;min-width:22px;text-align:center;border:1px solid rgba(27,58,92,0.15);}
+.vote-bar{position:absolute;bottom:0;left:0;height:3px;background:var(--mid);transition:width 0.3s;opacity:0.5;}
+.vote-bar.top-vote{background:var(--green);opacity:0.8;}
+.toast{position:fixed;bottom:60px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:700;z-index:99999;pointer-events:none;opacity:0;transition:opacity 0.2s;border-left:4px solid var(--amber);}
+.toast.show{opacity:1;}
+.modal-overlay{display:none;position:absolute;inset:0;background:rgba(0,0,0,0.45);z-index:500;align-items:center;justify-content:center;}
+.modal-overlay.show{display:flex;}
+.modal-box{background:#fff;border-radius:8px;padding:24px 28px;max-width:420px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.2);}
+.modal-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.modal-body{font-size:13px;color:var(--ink);line-height:1.7;margin-bottom:16px;}
+.modal-btns{display:flex;gap:8px;justify-content:flex-end;}
+.mbtn{border:1px solid var(--border);background:#fff;padding:7px 18px;border-radius:4px;font-size:13px;cursor:pointer;font-family:'Noto Serif TC',serif;}
+.mbtn.confirm{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:700;}
+.mbtn:hover{opacity:0.82;}
 .why-reveal-card{background:var(--white);border:1px solid var(--border);border-top:6px solid var(--green);padding:15px 20px;flex:1;min-height:0;overflow:hidden;font-size:clamp(12px,1.5vw,15px);color:var(--ink);line-height:1.9;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
 .why-reaction{background:var(--note);border:1px solid var(--noteb);border-top:4px solid var(--noteb);padding:9px 15px;font-size:clamp(11px,1.3vw,14px);color:var(--ink);font-style:italic;line-height:1.6;flex-shrink:0;display:flex;gap:8px;align-items:flex-start;margin-top:8px;}
 .why-next-hint{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--orange);text-align:right;flex-shrink:0;margin-top:4px;letter-spacing:1px;}
-
-/* ══ FUNNEL ══ */
 .funnel{flex:1;display:flex;flex-direction:column;gap:5px;min-height:0;}
 .f-row{display:grid;grid-template-columns:90px 1fr 16px 1fr;gap:5px;align-items:center;flex:1;min-height:0;}
 .f-tag{color:#fff;padding:5px 8px;font-family:'Share Tech Mono',monospace;font-size:9px;font-weight:bold;text-align:center;letter-spacing:1px;display:flex;align-items:center;justify-content:center;height:100%;}
@@ -142,12 +109,8 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 .f-a{padding:7px 12px;font-size:clamp(10px,1.3vw,13px);color:var(--ink);border:1px solid var(--border);background:var(--white);display:flex;align-items:center;height:100%;line-height:1.4;}
 .f-a.key{background:var(--note);border-color:var(--noteb);font-weight:700;}
 .f-arr{text-align:center;color:#bbb;font-size:13px;display:flex;align-items:center;justify-content:center;}
-
-/* ══ VERDICT ══ */
 .verdict-box{background:var(--white);border:1px solid var(--border);border-top:6px solid var(--amber);padding:18px 26px;flex:1;min-height:0;overflow:hidden;font-size:clamp(13px,1.55vw,16px);color:var(--ink);line-height:2;box-shadow:0 2px 8px rgba(0,0,0,0.07);}
 .verdict-box strong{color:var(--orange);font-weight:900;}
-
-/* ══ TEACH ══ */
 .teach-def{background:var(--note);border:1px solid var(--noteb);border-left:6px solid var(--noteb);padding:12px 18px;flex-shrink:0;margin-bottom:10px;font-size:clamp(12px,1.5vw,15px);line-height:1.8;color:var(--ink);}
 .three-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;min-height:0;}
 .role-card{background:var(--white);border:1px solid var(--border);border-top:5px solid var(--teal);padding:14px;display:flex;flex-direction:column;}
@@ -157,8 +120,6 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 .rk{background:var(--paper);color:var(--teal);font-weight:700;}
 .rdk{background:#FFF5F5;color:var(--red);}
 .rlbl{font-size:9px;opacity:0.75;display:block;margin-bottom:1px;}
-
-/* ══ CONVERGE ══ */
 .conv-quote{background:var(--navy);border-left:7px solid var(--amber);padding:18px 26px;flex-shrink:0;margin-bottom:12px;font-size:clamp(14px,1.9vw,19px);color:#e8e8f0;line-height:1.9;}
 .conv-quote strong{color:var(--amber);}
 .conv-sub{font-size:clamp(12px,1.4vw,14px);color:#b0c4d8;margin-top:10px;line-height:1.8;}
@@ -166,8 +127,6 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 .conv-card{background:var(--white);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;}
 .conv-head{padding:10px 14px;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;}
 .conv-body{padding:12px 14px;font-size:clamp(11px,1.3vw,13px);color:#4A4A4A;line-height:1.8;flex:1;}
-
-/* ══ CLOSING ══ */
 #s-closing .content{background:var(--navy);}
 .close-title{font-size:clamp(28px,5vw,54px);font-weight:900;color:#fff;}
 .close-sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:#7A9ABE;letter-spacing:4px;margin-bottom:16px;}
@@ -178,7 +137,6 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
 </head>
 <body>
 
-<!-- ══ COVER ══ -->
 <div id="s-cover" class="screen">
   <div class="topbar" style="background:var(--orange)"></div>
   <div class="content">
@@ -188,20 +146,16 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
 
-<!-- ══ CASE FILE ══ -->
 <div id="s-case" class="screen">
   <div class="topbar" style="background:var(--navy)"></div>
   <div class="content">
-    <div class="sec-head">
-      <span class="sec-title">🗂️ 案件檔案</span>
-      <span class="sec-mono">去識別化 · 真實案例</span>
-    </div>
+    <div class="sec-head"><span class="sec-title">🗂️ 案件檔案</span></div>
     <div style="display:flex;gap:14px;flex:1;min-height:0;">
       <div class="story-card">
-        <div class="story-line"><span class="sico">📦</span><span>A 倉把貨物連同棧板調度送往 B 倉。A 倉因此棧板不足，向棧板租賃公司提出需求。</span></div>
-        <div class="story-line"><span class="sico">🚛</span><span>棧板公司自己庫存不足，找上現存棧板最多的 B 倉商量，請 B 倉把棧板送回 A 倉。</span></div>
-        <div class="story-line"><span class="sico">🤝</span><span>B 倉善意配合，把棧板調回去，費用掛在自己名下。</span></div>
-        <div class="story-line"><span class="sico">👏</span><span>問題解決了。大家都說 B 倉很配合、很有團隊精神。</span></div>
+        <div class="story-line"><span class="sico">📦</span><span>A倉因業務需求，把貨物連同棧板送往B倉。A倉因此棧板不足，向棧板公司提出需求。</span></div>
+        <div class="story-line"><span class="sico">🚛</span><span>棧板公司發現庫存不足，找上棧板量最多的B倉商量，請B倉把棧板送回A倉。</span></div>
+        <div class="story-line"><span class="sico">🤝</span><span>B倉全力配合，把棧板調回去。</span></div>
+        <div class="story-line"><span class="sico">👏</span><span>問題解決了！但是...總覺得哪裡怪怪的</span></div>
       </div>
       <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;">
         <div style="width:76px;height:76px;border-radius:50%;border:3px solid var(--orange);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:12px;font-weight:bold;color:var(--orange);background:var(--cream);">CASE<br>#01</div>
@@ -214,71 +168,40 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
 
-<!-- ══ INVESTIGATION ══ -->
 <div id="s-inv" class="screen">
   <div class="topbar" style="background:var(--navy)"></div>
   <div class="content">
-
     <div class="ev-list">
-      <div class="ev-header">🕵️ 人證 · 物證　✋ 多數決選一個</div>
-
+      <div class="ev-header">🕵️ 人證 · 物證　✋ 多數決選擇先調查哪個</div>
       <div class="ev-item" id="ev-0" onclick="openEvidence(0)">
         <div class="ev-icon-wrap">👩‍💼</div>
-        <div class="ev-info">
-          <div class="ev-tag">人證 01</div>
-          <div class="ev-name">A 倉調度負責人</div>
-          <div class="ev-hint">棧板是怎麼移到B倉的？</div>
-        </div>
+        <div class="ev-info"><div class="ev-tag">人證 01</div><div class="ev-name">A倉負責人</div><div class="ev-hint">棧板是怎麼移到B倉的？</div></div>
         <div class="ev-done-mark" id="em-0"></div>
       </div>
-
       <div class="ev-item" id="ev-1" onclick="openEvidence(1)">
         <div class="ev-icon-wrap">🚛</div>
-        <div class="ev-info">
-          <div class="ev-tag">人證 02</div>
-          <div class="ev-name">棧板公司業務代表</div>
-          <div class="ev-hint">為什麼找B倉協調？</div>
-        </div>
+        <div class="ev-info"><div class="ev-tag">人證 02</div><div class="ev-name">棧板公司業務代表</div><div class="ev-hint">為什麼找B倉協調？</div></div>
         <div class="ev-done-mark" id="em-1"></div>
       </div>
-
       <div class="ev-item" id="ev-2" onclick="openEvidence(2)">
         <div class="ev-icon-wrap">🏢</div>
-        <div class="ev-info">
-          <div class="ev-tag">人證 03</div>
-          <div class="ev-name">B 倉作業主管</div>
-          <div class="ev-hint">為什麼費用掛在自己名下？</div>
-        </div>
+        <div class="ev-info"><div class="ev-tag">人證 03</div><div class="ev-name">B 倉作業主管</div><div class="ev-hint">為什麼費用掛在自己名下？</div></div>
         <div class="ev-done-mark" id="em-2"></div>
       </div>
-
       <div class="ev-item" id="ev-3" onclick="openEvidence(3)">
         <div class="ev-icon-wrap">📊</div>
-        <div class="ev-info">
-          <div class="ev-tag">物證 01</div>
-          <div class="ev-name">預算編列紀錄</div>
-          <div class="ev-hint">這筆費用怎麼被編列的？</div>
-        </div>
+        <div class="ev-info"><div class="ev-tag">物證 01</div><div class="ev-name">預算編列紀錄</div><div class="ev-hint">這筆費用怎麼被編列的？</div></div>
         <div class="ev-done-mark" id="em-3"></div>
       </div>
-
       <div class="ev-item ev-key" id="ev-4" onclick="openEvidence(4)">
         <div class="ev-icon-wrap">📋</div>
-        <div class="ev-info">
-          <div class="ev-tag">物證 02　🔑</div>
-          <div class="ev-name">合作協議書</div>
-          <div class="ev-hint">協議書裡到底怎麼寫的？</div>
-        </div>
+        <div class="ev-info"><div class="ev-tag">物證 02　🔑</div><div class="ev-name">合作協議書</div><div class="ev-hint">協議書裡到底怎麼寫的？</div></div>
         <div class="ev-done-mark" id="em-4"></div>
       </div>
     </div>
-
     <div class="clue-panel">
       <div class="clue-header">📌 偵查結果</div>
-      <div class="clue-empty" id="clue-empty">
-        <span style="font-size:40px;">🗂️</span>
-        <span>選擇人證或物證<br>偵探深思後才行動<br><br><span style="font-size:12px;color:var(--border);">✋ 員工多數決，主持人點選</span></span>
-      </div>
+      <div class="clue-empty" id="clue-empty"><span style="font-size:40px;">🗂️</span><span>選擇人證或物證<br>偵探深思後才行動<br><br><span style="font-size:12px;color:var(--border);">✋ 員工多數決，主持人點選</span></span></div>
       <div class="clue-reveal" id="clue-reveal">
         <div class="ev-type-tag" id="cr-type"></div>
         <div class="clue-title" id="cr-title"></div>
@@ -288,274 +211,170 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper);font-
       </div>
       <div class="prog-row">
         <span class="prog-lbl">調查進度</span>
-        <div class="pdot" id="pd-0"></div>
-        <div class="pdot" id="pd-1"></div>
-        <div class="pdot" id="pd-2"></div>
-        <div class="pdot" id="pd-3"></div>
-        <div class="pdot key-dot" id="pd-4"></div>
+        <div class="pdot" id="pd-0"></div><div class="pdot" id="pd-1"></div><div class="pdot" id="pd-2"></div><div class="pdot" id="pd-3"></div><div class="pdot key-dot" id="pd-4"></div>
       </div>
     </div>
-
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
 
-<!-- ══ WHY SCREENS (JS generated) ══ -->
-
-<!-- ══ FUNNEL ══ -->
 <div id="s-funnel" class="screen">
   <div class="topbar" style="background:var(--red)"></div>
   <div class="content">
-    <div class="sec-head">
-      <span class="sec-title">🎯 五真因完整還原</span>
-      <span class="sec-mono">WHY 1 → WHY 5</span>
-    </div>
+    <div class="sec-head"><span class="sec-title">🎯 五真因完整還原</span><span class="sec-mono">WHY 1 → WHY 5</span></div>
     <div class="funnel" id="funnel-main"></div>
     <div style="background:var(--navy);color:#fff;padding:12px 24px;text-align:center;font-size:clamp(13px,1.5vw,15px);font-weight:700;letter-spacing:1px;flex-shrink:0;margin-top:8px;">找到正確的人、事、物與流程——問題才能真正被解決。🔍</div>
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
 
-<!-- ══ VERDICT ══ -->
 <div id="s-verdict" class="screen">
   <div class="topbar" style="background:var(--amber)"></div>
   <div class="content">
     <div class="sec-head"><span class="sec-title">⚖️ 案件核心還原</span></div>
-    <div style="font-size:clamp(20px,3vw,34px);font-weight:900;color:var(--navy);margin-bottom:12px;flex-shrink:0;">B 倉做錯了嗎？</div>
-    <div class="verdict-box">
-      <strong>沒有。</strong>B倉配合調度，出於善意，確實解決了眼前的問題。<br>
-      A倉正常調度，棧板公司庫存不足找B倉商量——三方都沒有錯。<br><br>
-      但有一件事，三方都不知道：<strong>合作協議書明載，補板費用已包含在每月租賃費裡。</strong><br>
-      B倉這次出的錢——本來就不該是它出的。<br><br>
-      這不是誰的錯。這是<strong>合作關係中天然存在的資訊差</strong>：每個人都用自己知道的資訊做決定，但沒有人掌握完整的全貌。
-    </div>
+    <div style="font-size:clamp(20px,3vw,34px);font-weight:900;color:var(--navy);margin-bottom:12px;flex-shrink:0;">有誰做錯事了嗎？</div>
+    <div class="verdict-box"><strong>沒有。</strong>A倉配合營運送出棧板、B倉配合將棧板送回還承擔了費用、棧板公司庫存不足找了B倉協商。大家都互相體諒、理解彼此的需求，確實地解決了眼前的問題——三方都沒有錯。<br><br>但有一件事，三方都不知道：<strong>合作協議書明載，補板費用已包含在租賃費裡。</strong><br>原來——B倉這次出的錢，本來不該是它出的。<br><br>這就是<strong>合作關係中存在的資訊差</strong>：每個人都用自己知道的資訊做決定，但沒有人掌握完整的全貌。</div>
     <div style="background:var(--navy);color:#fff;padding:12px 24px;text-align:center;font-size:clamp(13px,1.5vw,15px);font-weight:700;letter-spacing:1px;flex-shrink:0;margin-top:10px;">找到正確的人、事、物與流程——問題才能真正被解決。🔍</div>
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
 
-<!-- ══ TEACH 1 ══ -->
 <div id="s-teach1" class="screen">
   <div class="topbar" style="background:var(--teal)"></div>
   <div class="content">
-    <div class="sec-head"><span class="sec-title">🔍 偵探課 01 · 什麼是資訊差？</span></div>
-    <div class="teach-def">📌 資訊差：同一件事，不同的人掌握的資訊不一樣，導致各自做出了「在自己的認知裡完全合理」的決定，但整體結果卻不是最好的。</div>
+    <div class="sec-head"><span class="sec-title">🔍 偵探課 01 · 資訊差</span></div>
+    <div class="teach-def">📌 同一件事，不同的人掌握的資訊不一樣，導致各自做出了「在自己的認知裡完全合理」的決定，但整體結果卻不是最好的。</div>
     <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);margin-bottom:10px;flex-shrink:0;">剛才我們訪談的三位，就是資訊差的完整示範 👆</div>
     <div class="three-grid">
-      <div class="role-card">
-        <div class="role-icon">👩‍💼</div><div class="role-name">A 倉</div>
-        <div class="rrow rk"><span class="rlbl">💡 知道</span>自己需要補棧板</div>
-        <div class="rrow rdk"><span class="rlbl">❓ 不知道</span>合作協議書的補板條款</div>
-      </div>
-      <div class="role-card">
-        <div class="role-icon">🚛</div><div class="role-name">棧板公司</div>
-        <div class="rrow rk"><span class="rlbl">💡 知道</span>B倉有棧板可調度</div>
-        <div class="rrow rdk"><span class="rlbl">❓ 不知道</span>補板是自己協議書裡的責任</div>
-      </div>
-      <div class="role-card">
-        <div class="role-icon">🏢</div><div class="role-name">B 倉</div>
-        <div class="rrow rk"><span class="rlbl">💡 知道</span>被請求協調，善意配合</div>
-        <div class="rrow rdk"><span class="rlbl">❓ 不知道</span>這筆費用本來不該它出</div>
-      </div>
+      <div class="role-card"><div class="role-icon">👩‍💼</div><div class="role-name">A 倉</div><div class="rrow rk"><span class="rlbl">💡 知道</span>自己需要補棧板</div><div class="rrow rdk"><span class="rlbl">❓ 不知道</span>合作協議書的補板條款</div></div>
+      <div class="role-card"><div class="role-icon">🚛</div><div class="role-name">棧板公司</div><div class="rrow rk"><span class="rlbl">💡 知道</span>B倉有棧板可調度</div><div class="rrow rdk"><span class="rlbl">❓ 不知道</span>補板費用是自己協議書裡的責任</div></div>
+      <div class="role-card"><div class="role-icon">🏢</div><div class="role-name">B 倉</div><div class="rrow rk"><span class="rlbl">💡 知道</span>被請求協調，積極配合</div><div class="rrow rdk"><span class="rlbl">❓ 不知道</span>這筆費用本來不該它出</div></div>
     </div>
     <div style="background:var(--teal);color:#fff;padding:10px 20px;text-align:center;font-size:clamp(12px,1.4vw,14px);font-weight:700;margin-top:8px;flex-shrink:0;">→ 三方都沒有錯，但三方都只有部分的資訊。</div>
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
 
-<!-- ══ TEACH 2 ══ -->
 <div id="s-teach2" class="screen">
   <div class="topbar" style="background:var(--orange)"></div>
   <div class="content">
-    <div class="sec-head"><span class="sec-title">🔍 偵探課 02 · 什麼是五真因（5 Whys）？</span></div>
-    <div class="teach-def">📌 遇到問題，不停在表面，連問五次「為什麼」——每一層的答案，都會帶你更靠近真正的根本原因。剛才我們調查的過程，就是五真因分析法的實踐。</div>
-    <div class="funnel" id="funnel-teach"></div>
+    <div class="sec-head">
+      <span class="sec-title">🔍 偵探課 02 · 五真因法（5 Whys）怎麼用？</span>
+      <span class="sec-mono">TOOL GUIDE</span>
+    </div>
+
+    <div class="teach-def" style="margin-bottom:12px;">
+      📌 遇到問題，別急著解決表面症狀。連問五個「為什麼」，每一層都把上一層的答案當成新問題繼續追——直到找到<strong>真正能解決問題的根本原因</strong>。
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:0;">
+
+      <!-- Step 1 -->
+      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--navy);padding:12px 16px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 01</div>
+        <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);">📍 描述問題現象</div>
+        <div style="font-size:clamp(11px,1.3vw,13px);color:var(--ink);line-height:1.7;">用一句話說清楚「發生了什麼事」。不要帶入原因，只描述看到的結果。<br><span style="color:var(--muted);font-style:italic;">例：B倉承擔了不該由它出的補板費用。</span></div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--mid);padding:12px 16px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 02</div>
+        <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);">❓ 連問五個「為什麼」</div>
+        <div style="font-size:clamp(11px,1.3vw,13px);color:var(--ink);line-height:1.7;">把上一層的答案當作下一個問題的起點，不斷往下追。<strong>不要跳層</strong>——每一層都要有實際根據，不是猜測。</div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--orange);padding:12px 16px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 03</div>
+        <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);">🎯 確認根因可被解決</div>
+        <div style="font-size:clamp(11px,1.3vw,13px);color:var(--ink);line-height:1.7;">問到的根因，要是<strong>我們有能力改變的事</strong>。如果答案是「人性」或「老天爺」，繼續往更具體的方向追。</div>
+      </div>
+
+      <!-- Step 4 -->
+      <div style="background:var(--white);border:1px solid var(--border);border-left:5px solid var(--teal);padding:12px 16px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:700;">STEP 04</div>
+        <div style="font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--navy);">🛠️ 針對根因擬定對策</div>
+        <div style="font-size:clamp(11px,1.3vw,13px);color:var(--ink);line-height:1.7;">解決方案要對準根因，不是貼在表面症狀上。問自己：<strong>「解決這個，問題以後還會再發生嗎？」</strong>若不會，才是對的方向。</div>
+      </div>
+
+    </div>
+
+    <!-- 底部注意事項 -->
+    <div style="display:flex;gap:10px;margin-top:10px;flex-shrink:0;">
+      <div style="flex:1;background:rgba(232,131,42,0.1);border:1px solid rgba(232,131,42,0.3);padding:8px 14px;font-size:clamp(10px,1.2vw,12px);color:var(--ink);line-height:1.6;">
+        ⚠️ <strong>常見地雷：</strong>把「有人沒做好」當根因 → 真正的根因通常是<em>流程、資訊、制度</em>層面的缺口，不是某個人的問題。
+      </div>
+      <div style="flex:1;background:rgba(42,122,90,0.1);border:1px solid rgba(42,122,90,0.3);padding:8px 14px;font-size:clamp(10px,1.2vw,12px);color:var(--ink);line-height:1.6;">
+        ✅ <strong>好的根因長這樣：</strong>具體、可操作、能用 SOP / 制度 / 職責分工來解決——而不是靠個人記性或善意。
+      </div>
+    </div>
+
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
 
-<!-- ══ CONVERGE ══ -->
 <div id="s-converge" class="screen">
   <div class="topbar" style="background:var(--navy)"></div>
   <div class="content">
-    <div class="sec-head"><span class="sec-title">💡 五真因的積極意義</span></div>
-    <div class="conv-quote">
-      這個案例裡沒有壞人，每個人都做了他認為對的事。<br>
-      <strong>問題的根源，是合作關係中天然存在的資訊差。</strong>
-      <div class="conv-sub">SOP的價值，就是讓重要的知識不住在某個人的腦袋裡，而是住在制度裡——<br>不怕換人，不怕換廠商，不怕時間久了大家忘記。</div>
-    </div>
+    <div class="sec-head"><span class="sec-title">💡 積極的五真因</span></div>
+    <div class="conv-quote">這個案例裡，每個人都做了認知內正確的事。<br><strong>問題的根源，是合作關係中本就存在的資訊差。</strong><div class="conv-sub">SOP的價值，就是讓重要的知識不住在某個人的腦袋裡，而是住在制度裡。</div></div>
     <div class="three-conv">
-      <div class="conv-card">
-        <div class="conv-head" style="background:var(--teal)">🔍 深思才行動</div>
-        <div class="conv-body">偵探在出動前會先問：我需要什麼資訊？從哪裡找？這個習慣，讓我們在行動前先確認責任歸屬，而不是靠直覺假設。</div>
-      </div>
-      <div class="conv-card">
-        <div class="conv-head" style="background:var(--orange)">📋 協議書要活起來</div>
-        <div class="conv-body">合作協議書的關鍵條款，必須轉化成現場看得懂、用得到的作業規範——不能只活在文件夾裡，要活在每個人的日常作業裡。</div>
-      </div>
-      <div class="conv-card">
-        <div class="conv-head" style="background:var(--navy)">🗺️ SOP消弭資訊差</div>
-        <div class="conv-body">SOP讓重要知識住在制度裡，不因人員異動或合作關係改變而消失——這才是SOP真正的價值：不靠運氣，靠制度。</div>
-      </div>
+      <div class="conv-card"><div class="conv-head" style="background:var(--teal)">🔍 深思再行動</div><div class="conv-body">偵探在出動前會先問：我需要什麼資訊？從哪裡找？這個習慣，讓我們在行動前先確認資訊差與責任歸屬，而不是靠過去經驗或直覺。</div></div>
+      <div class="conv-card"><div class="conv-head" style="background:var(--orange)">📋 文件要活起來</div><div class="conv-body">許多合約、協議書、文件中的關鍵條款，必須轉化成現場看得懂、用得到的作業規範——不能只活在文件夾裡，要活在每個人的日常作業裡。</div></div>
+      <div class="conv-card"><div class="conv-head" style="background:var(--navy)">🗺️ SOP消弭資訊差</div><div class="conv-body">SOP讓重要知識住在制度裡，不因人員異動或合作關係改變而消失——這才是SOP真正的價值：靠標準化的制度消弭資訊差。</div></div>
     </div>
   </div>
   <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
 
-<!-- ══ CLOSING ══ -->
 <div id="s-closing" class="screen">
   <div class="topbar" style="background:var(--orange)"></div>
   <div class="content" style="background:var(--navy);">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-shrink:0;">
-      <span style="font-size:clamp(38px,6vw,60px);">🕵️</span>
-      <div><div class="close-title">主管結語</div><div class="close-sub">CLOSING REMARKS · 首席偵探總結</div></div>
-    </div>
-    <div class="close-box"><div class="close-bt">🔍 案件確認</div><div class="close-bd">我們看到的核心啟發是什麼</div></div>
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-shrink:0;"><span style="font-size:clamp(38px,6vw,60px);">🕵️</span><div><div class="close-title">結語</div><div class="close-sub">CLOSING REMARKS</div></div></div>
+    <div class="close-box"><div class="close-bt">🔍 核心啟發</div><div class="close-bd">行動前先想想五個為什麼、注意資訊差、將流程標準化(SOP)</div></div>
     <div class="close-box"><div class="close-bt" style="color:var(--orange)">🗺️ 下一步行動</div><div class="close-bd">我們接下來會怎麼把它變成制度</div></div>
     <div class="close-box"><div class="close-bt" style="color:var(--amber)">💬 給大家的話</div><div class="close-bd">對所有同仁主動思考的肯定與期許</div></div>
   </div>
   <div class="footer" style="background:#0d1e2e;"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>
 </div>
 
-<!-- HOST BAR -->
 <div id="hostbar">
   <button class="btn hidden" id="btn-prev" onclick="prev()">← 上一頁</button>
   <span id="slide-info"></span>
-  <button class="btn gn hidden" id="btn-reveal-why" onclick="revealWhy()">✓ 揭曉答案</button>
+  <button class="btn gn hidden" id="btn-confirm-vote" onclick="confirmVote()">✓ 確認最高票送出</button>
   <button class="btn rd hidden" id="btn-all-done" onclick="goWhys()">線索收集完畢 →</button>
   <button class="btn go" id="btn-next" onclick="next()">開始偵查 →</button>
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
-// ── EVIDENCE DATA ──
-const EVIDENCE = [
-  {
-    type:"👩‍💼 人證 01", name:"A倉調度負責人訪談",
-    icon:"👩‍💼", color:"#1B3A5C",
-    body:"A倉依照正常作業流程，把貨物連同棧板一起調度送往B倉。這是倉庫之間的標準作業，沒有任何異常。<br><br>A倉棧板不足後，立刻聯絡棧板租賃公司提出補板需求——這個步驟也完全正確。",
-    quote:"我們就是照流程做，貨到B倉，棧板也跟著去了。不夠用就找棧板公司，這不是一直都這樣嗎？",
-    nextq:"那棧板公司接到需求之後，怎麼處理的？"
-  },
-  {
-    type:"🚛 人證 02", name:"棧板公司業務代表訪談",
-    icon:"🚛", color:"#2E5F8A",
-    body:"棧板公司接到A倉的補板需求後，確認自己的庫存不足，無法直接補給。<br><br>B倉目前持有最多棧板，所以棧板公司聯絡B倉，請B倉協助把棧板調回A倉。業務代表表示，這是遇到這類情況的「慣例處理方式」。",
-    quote:"我們庫存不夠，B倉有最多板，就叫他們調回去啊。以前都是這樣處理的，也沒有人說不行。",
-    nextq:"B倉接到這個請求，怎麼回應？費用又是怎麼算的？"
-  },
-  {
-    type:"🏢 人證 03", name:"B倉作業主管訪談",
-    icon:"🏢", color:"#1A9E8F",
-    body:"B倉接到棧板公司的請求，二話不說配合調度，把棧板送回A倉。費用直接由B倉吸收，沒有人提出異議。<br><br>B倉主管表示，沒有任何人告訴他可以拒絕，也沒有人告訴他應該先確認費用應由誰負擔。",
-    quote:"棧板公司說叫我們幫忙，我們就幫了。費用的事，沒有人說要怎麼處理，就掛我們這邊了。",
-    nextq:"這筆費用有沒有走正式的預算編列流程？"
-  },
-  {
-    type:"📊 物證 01", name:"預算編列紀錄",
-    icon:"📊", color:"#E8832A",
-    body:"調閱預算編列紀錄後發現：這筆費用<strong>沒有經過任何正式的預算編列或費用歸屬確認流程</strong>。<br><br>費用直接由B倉吸收，既無核准記錄，也無責任歸屬審核。整個過程中，沒有任何一個節點有人被要求停下來問：「這筆費用，應該由誰負擔？」",
-    quote:null,
-    nextq:"費用歸屬從來沒有被確認過——那合作協議書裡，有沒有規定這件事？"
-  },
-  {
-    type:"📋 物證 02 🔑", name:"合作協議書",
-    icon:"📋", color:"#E8C840", isKey:true,
-    body:"這是整個案件的<strong>關鍵物證</strong>。<br><br>合作協議書第X條明確記載：<strong>棧板補充費用已包含在每月棧板租賃費用中。當任一倉庫棧板數量不足時，補板作業與相關費用由棧板租賃公司負責執行與承擔。</strong><br><br>也就是說——大家每個月付的租賃費，補板這件事早就算進去了。<br>B倉這次出的費用，本來就不該是它出的。",
-    quote:"合作協議書早就寫清楚了——補板是棧板公司的責任，不是B倉的。",
-    nextq:"協議書有寫清楚，為什麼三方都不知道？為什麼沒有人去查過這份文件？"
-  },
+const EVIDENCE=[
+  {type:"👩‍💼 人證 01",name:"A倉同仁訪談",icon:"👩‍💼",color:"#1B3A5C",body:"A倉依照公司要求把貨物連同棧板一起送往B倉。這是倉庫之間的標準作業。<br><br>A倉棧板不足後，立刻聯絡棧板公司提出補板需求。",quote:"我們就是照流程做，貨到B倉，棧板也跟著去了。不夠用就找棧板公司，不是一直都這樣嗎？",nextq:"那棧板公司接到需求之後，怎麼處理的？"},
+  {type:"🚛 人證 02",name:"棧板公司業務代表訪談",icon:"🚛",color:"#2E5F8A",body:"棧板公司接到A倉的補板需求後，確認自己的庫存不足，無法直接補給。<br><br>B倉目前持有最多棧板，所以棧板公司聯絡B倉，請B倉協助把棧板調回A倉。",quote:"我們庫存不夠，B倉有最多板，就叫他們調回去啊。以前都是這樣處理的，這是慣例。",nextq:"B倉接到這個請求，怎麼回應？費用又是怎麼算的？"},
+  {type:"🏢 人證 03",name:"B倉同仁訪談",icon:"🏢",color:"#1A9E8F",body:"B倉接到棧板公司的請求，確實A倉的棧板都在這裡，B倉二話不說配合把棧板送回A倉，送回去的費用就由B倉吸收。<br><br>",quote:"我們確實收到了來自A倉的貨跟棧板，所以就在收到需求的同時把棧板送回去，可能是使用者付費？",nextq:"這筆費用有沒有經過正式的預算編列流程？"},
+  {type:"📊 物證 01",name:"預算編列紀錄",icon:"📊",color:"#E8832A",body:"調閱預算編列紀錄後發現：這筆費用<strong>沒有經過任何正式的預算編列或費用歸屬確認流程</strong>。<br><br>費用直接由B倉吸收，既無核准記錄，也無責任歸屬審核。",quote:null,nextq:"費用歸屬好像不太清楚——那合作協議書裡，有沒有規定這件事？"},
+  {type:"📋 物證 02 🔑",name:"合作協議書",icon:"📋",color:"#E8C840",isKey:true,body:"合作協議書寫著：<strong>租賃費用已包含補板成本；當合作的倉庫棧板數量不足時，將由棧板公司負責執行補板與承擔成本。",quote:"每個月付的租賃費，補板這件事早就算進去了。那麼，B倉這次出的費用，究竟是？",nextq:"協議書有寫清楚，為什麼三方都不知道？為什麼沒有人去查過這份文件？"},
 ];
 
-// ── WHY DATA ──
-const WHYS_DATA = [
-  {
-    num:"WHY 1",
-    q:"B倉為什麼要出這筆費用？",
-    context:"根據剛才三位證人的陳述，我們已經知道事件的來龍去脈。現在來問第一個為什麼。",
-    opts:[
-      {l:"A",t:"B倉主動要求承擔費用"},
-      {l:"B",t:"棧板公司叫B倉協調，B倉照做，費用自然掛在自己名下"},
-      {l:"C",t:"B倉費用最多，由它出最合理"},
-      {l:"D",t:"這是倉庫之間的慣例"},
-    ],
-    ans:"B", ansColor:"#2E5F8A",
-    reveal:"棧板公司請B倉協助，B倉善意配合，費用掛自己名下——因為沒有任何人告訴它可以拒絕，也沒有人告訴它應該先確認費用責任。<br><br>B倉不是做錯了，是它根本不知道還有另一個選擇。",
-    reaction:"B倉只是照著被告知的方式做。那為什麼沒有人確認費用歸屬？",
-    next:"WHY 2 →"
-  },
-  {
-    num:"WHY 2",
-    q:"為什麼沒有人確認費用歸屬？",
-    context:"B倉照指示行事，沒有人提出異議。那為什麼沒有人停下來問？",
-    opts:[
-      {l:"A",t:"大家都以為費用當然由執行方負擔"},
-      {l:"B",t:"沒有人被要求確認，也沒有這個步驟"},
-      {l:"C",t:"費用金額不大，大家不在意"},
-      {l:"D",t:"費用確認是財務的事，不是現場的事"},
-    ],
-    ans:"B", ansColor:"#1A9E8F",
-    reveal:"沒有任何流程要求在執行前確認費用責任歸屬。<br>不是因為懶，不是因為不在乎——而是因為根本沒有這個步驟。<br><br>當流程裡沒有「確認費用責任」這個動作，每個人只能做自己看得到的那一部分。",
-    reaction:"沒有確認步驟——那為什麼沒有這個步驟？",
-    next:"WHY 3 →"
-  },
-  {
-    num:"WHY 3",
-    q:"為什麼沒有「確認費用歸屬」這個步驟？",
-    context:"我們查了預算編列紀錄，費用直接被吸收，沒有任何確認流程。為什麼？",
-    opts:[
-      {l:"A",t:"這種情況很少發生，沒人想到要建立流程"},
-      {l:"B",t:"大家默認費用由執行方負擔，不需要確認"},
-      {l:"C",t:"沒有人知道合作協議書裡有補板責任的條款"},
-      {l:"D",t:"以上都有可能"},
-    ],
-    ans:"D", ansColor:"#E8832A",
-    reveal:"這幾個原因同時成立。<br>而且其中最關鍵的是：<strong>合作協議書早就明載補板是棧板公司的責任</strong>，但沒有人查過這份文件。<br><br>如果有人查了協議書，這個確認步驟本來可以很自然地建立起來。",
-    reaction:"協議書有寫，但沒有人知道——那為什麼三方都不知道合作協議書有這條款？",
-    next:"WHY 4 →"
-  },
-  {
-    num:"WHY 4",
-    q:"為什麼三方都不知道合作協議書有這條款？",
-    context:"我們查了合作協議書，發現補板責任早已明載其中。為什麼三方都不知道？",
-    opts:[
-      {l:"A",t:"協議書只有採購或主管層看過，現場從來沒有被告知"},
-      {l:"B",t:"協議書太長，沒有人完整讀過"},
-      {l:"C",t:"協議書的關鍵條款從未被轉化成現場作業知識"},
-      {l:"D",t:"以上都有可能"},
-    ],
-    ans:"D", ansColor:"#C0392B",
-    reveal:"這些原因同時存在。<br>合作協議書停在文件層，從來沒有往下走到現場層。<br><br>知道協議書的人不在現場，在現場的人不知道協議書。<br>這就是資訊差——不是沒有答案，是答案從來沒有流到需要它的人手上。",
-    reaction:"資訊有了，但沒有流到對的地方。那要怎麼讓它流到現場、讓這件事不再發生？",
-    next:"WHY 5 →"
-  },
-  {
-    num:"WHY 5 · 根因",
-    q:"要怎麼讓費用確認變成標準步驟、消弭資訊差？",
-    context:"我們已經找到了問題的核心。現在來問最後一個為什麼——也是最重要的一個。",
-    opts:[
-      {l:"A",t:"每次作業前，口頭提醒大家記得確認費用歸屬"},
-      {l:"B",t:"把合作協議書的補板條款印出來貼在倉庫"},
-      {l:"C",t:"建立SOP，把費用責任確認納入棧板調度標準步驟，讓協議書知識活在制度裡"},
-      {l:"D",t:"定期辦教育訓練，讓現場了解合作協議書內容"},
-    ],
-    ans:"C", ansColor:"#2A7A5A",
-    reveal:"根因找到了：<strong>沒有SOP把「確認費用歸屬」定義成棧板調度作業的標準步驟。</strong><br><br>口頭提醒靠記憶，貼公告靠眼力，訓練靠時機——<br>只有SOP，才能讓正確的步驟每次都被執行，不因人員異動或合作關係改變而消失。<br><br>這才是SOP真正的價值：<strong>消弭合作與人員異動中天然存在的資訊差。</strong>",
-    reaction:"找到了。SOP讓重要知識住在制度裡——不怕換人，不怕換廠商，不怕時間久了大家忘記。",
-    next:null
-  },
+const WHYS_DATA=[
+  {num:"WHY 1",q:"B倉為什麼要出這筆費用？",context:"根據剛才的調查，我們已經知道事件似乎存在著未解的問題。現在來問第一個為什麼。",opts:[{l:"A",t:"B倉主動要求承擔費用"},{l:"B",t:"因為沒有明確的費用歸屬"},{l:"C",t:"B倉預算最多，由它出最合理"},{l:"D",t:"這是倉庫之間的慣例"}],ans:"B",ansColor:"#2E5F8A",reveal:"棧板公司請B倉協助，B倉全力配合並將費用掛自己名下——因為沒有任何人知道是否有這類事件的流程與費用責任規範。<br><br>難道是誰出錯了嗎？",reaction:"沒有，大家只是照著被告知的方式做。那為什麼沒有人確認費用歸屬？",next:"WHY 2 →"},
+  {num:"WHY 2",q:"為什麼沒有人確認費用歸屬？",context:"B倉照指示行事，沒有人提出異議。那為什麼沒有人停下來問？",opts:[{l:"A",t:"可能有人刻意隱瞞"},{l:"B",t:"從沒有流程是確認費用歸屬，經驗談就是使用者付費"},{l:"C",t:"費用金額不大，大家不在意"},{l:"D",t:"費用確認是財務的事，不是現場的事"}],ans:"B",ansColor:"#1A9E8F",reveal:"沒有任何流程要求在執行前確認費用責任歸屬。<br>不是因為隱瞞或不在乎——而是因為根本沒有這個步驟。<br><br>難道是誰出錯了嗎？",reaction:"沒有，因為這個步驟根本不存在。那為什麼沒有這個步驟？",next:"WHY 3 →"},
+  {num:"WHY 3",q:"為什麼沒有「確認費用歸屬」這個步驟？",context:"我們查了預算編列紀錄，費用直接被吸收，沒有任何確認流程。為什麼？",opts:[{l:"A",t:"這種情況很少發生，沒人想到要建立流程"},{l:"B",t:"大家默認費用由執行方負擔，不需要確認"},{l:"C",t:"沒有人知道合作協議書裡有補板責任的條款"},{l:"D",t:"以上都有可能"}],ans:"D",ansColor:"#E8832A",reveal:"這幾個原因同時成立。<br>而且其中最關鍵的是：<strong>合作協議書早就明載補板是棧板公司的責任</strong>，但沒有人知曉。<br><br>難道有誰出錯了嗎？",reaction:"沒有，因為大家都不知道。那為什麼大家都不知道合作協議書有這條款？",next:"WHY 4 →"},
+  {num:"WHY 4",q:"為什麼三方都不知道合作協議書有這條款？",context:"我們查了合作協議書，發現補板責任跟成本歸屬早已明載其中。為什麼大家都不知道？",opts:[{l:"A",t:"協議書已經輾轉多手，早已遺失"},{l:"B",t:"協議書太長，沒有人完整讀過"},{l:"C",t:"協議書的關鍵條款從未被轉化成現場作業知識"},{l:"D",t:"以上都有可能"}],ans:"D",ansColor:"#C0392B",reveal:"這些原因同時存在。<br>合作協議書停在文件層，從來沒有實際被應用在現場。<br><br>知道協議書的人已不在現場，在現場的人不知道協議書。<br>這就是資訊差——不是沒有答案，是答案從來沒有流到需要它的人手上。",reaction:"資訊有了，但沒有流到對的地方。那要怎麼讓它流到現場、讓這件事不再發生？",next:"WHY 5 →"},
+  {num:"WHY 5 · 根因",q:"要怎麼讓費用確認變成標準步驟、消弭資訊差？",context:"我們已經找到了問題的核心。現在來問最後一個為什麼——也是最重要的一個。",opts:[{l:"A",t:"每次作業前，口頭提醒大家記得確認費用歸屬"},{l:"B",t:"把合作協議書的補板條款印出來貼在倉庫"},{l:"C",t:"建立SOP，把費用責任確認納入棧板調度標準步驟，讓協議書知識活在制度裡"},{l:"D",t:"定期辦教育訓練，讓現場了解合作協議書內容"}],ans:"C",ansColor:"#2A7A5A",reveal:"根因找到了：<strong>沒有SOP把「確認費用歸屬」定義成棧板調度作業的標準步驟。</strong><br><br>口頭提醒靠記憶，貼公告只有片面資訊，訓練還要等時機——<br>只有SOP，才能讓正確的步驟每次都被執行，不因人員異動或合作關係改變而消失。<br><br>這才是SOP真正的價值：<strong>消弭合作與人員異動中天然存在的資訊差。</strong>",reaction:"找到了。SOP讓重要知識住在制度裡。",next:null},
 ];
 
-// ── FUNNEL DATA ──
-const FUNNEL_ROWS = [
-  {tag:"WHY 1", q:"B倉為什麼要出這筆費用？", a:"照棧板公司指示協調，費用自然掛在自己名下", color:"#1B3A5C", key:false},
-  {tag:"WHY 2", q:"為什麼沒有人確認費用歸屬？", a:"沒有人被要求確認，也沒有這個步驟", color:"#1B3A5C", key:false},
-  {tag:"WHY 3", q:"為什麼沒有確認費用歸屬的步驟？", a:"合作協議書明載補板費含在租賃費裡，但沒有人知道", color:"#E8832A", key:true},
-  {tag:"WHY 4", q:"為什麼三方都不知道協議書有這條款？", a:"協議書知識只存在文件層，從未轉化成現場作業規範", color:"#1B3A5C", key:false},
-  {tag:"WHY 5 根因", q:"要怎麼消弭合作中的資訊差？", a:"→ 建立SOP，讓協議書知識活在制度裡，不因換人換廠商而消失", color:"#C0392B", key:true},
+const FUNNEL_ROWS=[
+  {tag:"WHY 1",q:"B倉為什麼要出這筆費用？",a:"照棧板公司指示協調，費用自然掛在自己名下",color:"#1B3A5C",key:false},
+  {tag:"WHY 2",q:"為什麼沒有人確認費用歸屬？",a:"從沒有流程是確認費用歸屬，經驗談就是使用者付費",color:"#1B3A5C",key:false},
+  {tag:"WHY 3",q:"為什麼沒有確認費用歸屬的步驟？",a:"合作協議書明載補板費含在租賃費裡，但沒有人知道",color:"#E8832A",key:true},
+  {tag:"WHY 4",q:"為什麼三方都不知道協議書有這條款？",a:"協議書知識只存在文件層，從未轉化成現場作業規範",color:"#1B3A5C",key:false},
+  {tag:"WHY 5 根因",q:"要怎麼消弭合作中的資訊差？",a:"→ 建立SOP，讓協議書知識活在制度裡",color:"#C0392B",key:true},
 ];
 
-function buildFunnel(id) {
-  document.getElementById(id).innerHTML = FUNNEL_ROWS.map(r=>`
+function buildFunnel(id){
+  document.getElementById(id).innerHTML=FUNNEL_ROWS.map(r=>`
     <div class="f-row">
       <div class="f-tag" style="background:${r.color}">${r.tag}</div>
       <div class="f-q">${r.q}</div>
@@ -564,23 +383,20 @@ function buildFunnel(id) {
     </div>`).join('');
 }
 buildFunnel('funnel-main');
-buildFunnel('funnel-teach');
+if(document.getElementById('funnel-teach')) buildFunnel('funnel-teach');
 
-// ── BUILD WHY SCREENS ──
-let whyScreenIds = [];
-let whyCur = -1; // which WHY we're on
-let whyRevealed = false;
+const voteState=WHYS_DATA.map(()=>({counts:{A:0,B:0,C:0,D:0},locked:false}));
+let whyScreenIds=[];
 
-function buildWhyScreens() {
-  const insertBefore = document.getElementById('s-funnel');
-  WHYS_DATA.forEach((w, idx) => {
-    // Vote screen
-    const vDiv = document.createElement('div');
-    vDiv.id = `s-why-${idx}-vote`;
-    vDiv.className = 'screen why-screen';
-    vDiv.innerHTML = `
+function buildWhyScreens(){
+  const insertBefore=document.getElementById('s-funnel');
+  WHYS_DATA.forEach((w,idx)=>{
+    const vDiv=document.createElement('div');
+    vDiv.id=`s-why-${idx}-vote`;
+    vDiv.className='screen why-screen';
+    vDiv.innerHTML=`
       <div class="topbar" style="background:${w.ansColor}"></div>
-      <div class="content">
+      <div class="content" style="position:relative;">
         <div class="sec-head">
           <span class="why-num">${w.num}</span>
           <span class="sec-mono" style="color:${w.ansColor};">${idx+1} / 5</span>
@@ -589,20 +405,32 @@ function buildWhyScreens() {
         <div class="why-context">${w.context}</div>
         <div class="opts-grid" id="why-opts-${idx}">
           ${w.opts.map(o=>`
-            <div class="opt-card" id="why-opt-${idx}-${o.l}">
+            <div class="opt-card" id="why-opt-${idx}-${o.l}" onclick="castVote(${idx},'${o.l}')">
               <div class="opt-letter" style="background:${w.ansColor}">${o.l}</div>
               <div class="opt-text">${o.t}</div>
+              <div class="vote-count" id="vc-${idx}-${o.l}">0</div>
+              <div class="vote-bar" id="vb-${idx}-${o.l}" style="width:0%"></div>
             </div>`).join('')}
+        </div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted);margin-top:6px;text-align:right;flex-shrink:0;" id="vote-total-${idx}">投票數：0　　主持人：確認最高票後按右下角「確認送出」</div>
+        <div class="modal-overlay" id="modal-${idx}">
+          <div class="modal-box">
+            <div class="modal-title" id="modal-title-${idx}"></div>
+            <div class="modal-body" id="modal-body-${idx}"></div>
+            <div class="modal-btns">
+              <button class="mbtn" onclick="closeModal(${idx})">再想想</button>
+              <button class="mbtn confirm" id="modal-confirm-${idx}" onclick="doConfirm(${idx})">確認送出</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>`;
-    document.body.insertBefore(vDiv, insertBefore);
+    document.body.insertBefore(vDiv,insertBefore);
 
-    // Reveal screen
-    const rDiv = document.createElement('div');
-    rDiv.id = `s-why-${idx}-reveal`;
-    rDiv.className = 'screen why-screen';
-    rDiv.innerHTML = `
+    const rDiv=document.createElement('div');
+    rDiv.id=`s-why-${idx}-reveal`;
+    rDiv.className='screen why-screen';
+    rDiv.innerHTML=`
       <div class="topbar" style="background:var(--green)"></div>
       <div class="content">
         <div class="sec-head">
@@ -612,155 +440,201 @@ function buildWhyScreens() {
         <div style="font-size:clamp(12px,1.4vw,15px);color:var(--muted);font-style:italic;flex-shrink:0;margin-bottom:8px;">${w.q}</div>
         <div class="why-reveal-card">${w.reveal}</div>
         <div class="why-reaction"><span>💬</span><span>${w.reaction}</span></div>
-        ${w.next ? `<div class="why-next-hint">${w.next}</div>` : ''}
+        ${w.next?`<div class="why-next-hint">${w.next}</div>`:''}
       </div>
       <div class="footer"><span>案件偵查室 · L&D · ASC 艾立供應鏈</span></div>`;
-    document.body.insertBefore(rDiv, insertBefore);
-
-    whyScreenIds.push(`s-why-${idx}-vote`, `s-why-${idx}-reveal`);
+    document.body.insertBefore(rDiv,insertBefore);
+    whyScreenIds.push(`s-why-${idx}-vote`,`s-why-${idx}-reveal`);
   });
 }
 buildWhyScreens();
 
-// ── EVIDENCE STATE ──
-const evDone = new Set();
-let evDotIdx = 0;
-const dotColors = ['#1B3A5C','#2E5F8A','#1A9E8F','#E8832A','#E8C840'];
+let pendingConfirmIdx=-1;
+let pendingConfirmLetter='';
 
-function openEvidence(idx) {
+function castVote(wIdx,letter){
+  const state=voteState[wIdx];
+  if(state.locked) return;
+  state.counts[letter]=(state.counts[letter]||0)+1;
+  updateVoteDisplay(wIdx);
+  showToast(`＋1 票 → 選項 ${letter}`);
+}
+
+function updateVoteDisplay(wIdx){
+  const state=voteState[wIdx];
+  const counts=state.counts;
+  const total=Object.values(counts).reduce((a,b)=>a+b,0);
+  const maxCount=Math.max(...Object.values(counts));
+  document.getElementById(`vote-total-${wIdx}`).textContent=`投票數：${total}　　主持人：確認最高票後按右下角「確認送出」`;
+  ['A','B','C','D'].forEach(l=>{
+    const c=counts[l]||0;
+    const pct=total>0?Math.round(c/total*100):0;
+    const vcEl=document.getElementById(`vc-${wIdx}-${l}`);
+    const vbEl=document.getElementById(`vb-${wIdx}-${l}`);
+    if(vcEl) vcEl.textContent=c>0?`${c}票`:'0';
+    if(vbEl){
+      vbEl.style.width=pct+'%';
+      vbEl.className='vote-bar'+(c===maxCount&&c>0?' top-vote':'');
+    }
+  });
+}
+
+function confirmVote(){
+  const screenId=SCREENS[cur];
+  const m=screenId&&screenId.match(/s-why-(\d+)-vote/);
+  if(!m) return;
+  const wIdx=parseInt(m[1]);
+  const state=voteState[wIdx];
+  const counts=state.counts;
+  const total=Object.values(counts).reduce((a,b)=>a+b,0);
+  if(total===0){showToast('⚠️ 還沒有人投票！');return;}
+  const maxCount=Math.max(...Object.values(counts));
+  const topLetters=Object.keys(counts).filter(l=>counts[l]===maxCount);
+  if(topLetters.length>1){
+    pendingConfirmIdx=wIdx;
+    pendingConfirmLetter=topLetters[0];
+    document.getElementById(`modal-title-${wIdx}`).textContent=`⚖️ 平票！選項 ${topLetters.join('、')} 各 ${maxCount} 票`;
+    document.getElementById(`modal-body-${wIdx}`).innerHTML=`目前平票，預設送出 <strong>選項 ${topLetters[0]}</strong>。<br>主持人可以選擇繼續投票，或直接確認送出。`;
+    document.getElementById(`modal-confirm-${wIdx}`).textContent=`送出 ${topLetters[0]}`;
+    document.getElementById(`modal-${wIdx}`).classList.add('show');
+  } else {
+    const winner=topLetters[0];
+    pendingConfirmIdx=wIdx;
+    pendingConfirmLetter=winner;
+    const w=WHYS_DATA[wIdx];
+    const winCount=counts[winner];
+    const winOpt=w.opts.find(o=>o.l===winner);
+    document.getElementById(`modal-title-${wIdx}`).textContent=`最高票：選項 ${winner}（${winCount} 票）`;
+    document.getElementById(`modal-body-${wIdx}`).innerHTML=`「${winOpt.t}」<br><br>確認以此作為本輪答案送出？`;
+    document.getElementById(`modal-confirm-${wIdx}`).textContent=`確認送出選項 ${winner}`;
+    document.getElementById(`modal-${wIdx}`).classList.add('show');
+  }
+}
+
+function closeModal(wIdx){
+  document.getElementById(`modal-${wIdx}`).classList.remove('show');
+}
+
+function doConfirm(wIdx){
+  closeModal(wIdx);
+  const w=WHYS_DATA[wIdx];
+  const letter=pendingConfirmLetter;
+  voteState[wIdx].locked=true;
+  document.querySelectorAll(`#why-opts-${wIdx} .opt-card`).forEach(card=>{card.classList.add('locked');});
+  if(letter===w.ans){
+    document.getElementById(`why-opt-${wIdx}-${letter}`).classList.add('correct');
+    showToast('✅ 答對了！進入解析...');
+    setTimeout(()=>{cur=SCREENS.indexOf(`s-why-${wIdx}-reveal`);show(cur);},900);
+  } else {
+    const wrongCard=document.getElementById(`why-opt-${wIdx}-${letter}`);
+    wrongCard.classList.add('wrong-shake');
+    setTimeout(()=>{
+      wrongCard.classList.remove('wrong-shake');
+      wrongCard.classList.add('wrong-final');
+      voteState[wIdx].locked=false;
+      document.querySelectorAll(`#why-opts-${wIdx} .opt-card`).forEach(card=>{
+        if(!card.classList.contains('wrong-final')) card.classList.remove('locked');
+      });
+      showToast('🤔 再想想看喔！這個方向不太對...',3000);
+    },450);
+  }
+}
+
+const evDone=new Set();
+let evDotIdx=0;
+const dotColors=['#1B3A5C','#2E5F8A','#1A9E8F','#E8832A','#E8C840'];
+
+function openEvidence(idx){
   if(evDone.has(idx)) return;
-  const ev = EVIDENCE[idx];
-
-  // show reveal panel
-  document.getElementById('clue-empty').style.display = 'none';
-  const cr = document.getElementById('clue-reveal');
-  cr.className = 'clue-reveal show';
-
-  document.getElementById('cr-type').textContent = ev.type;
-  document.getElementById('cr-title').textContent = ev.name;
-
-  const card = document.getElementById('cr-card');
-  card.innerHTML = ev.body;
-  card.className = ev.isKey ? 'evidence-card key-evidence' : 'evidence-card';
-
-  const quoteEl = document.getElementById('cr-quote');
-  if(ev.quote) {
-    quoteEl.textContent = ev.quote;
-    quoteEl.classList.remove('hidden');
-  } else {
-    quoteEl.classList.add('hidden');
-  }
-
-  const nextqEl = document.getElementById('cr-nextq');
-  if(ev.nextq) {
-    document.getElementById('cr-nextq-text').textContent = ev.nextq;
-    nextqEl.classList.remove('hidden');
-  } else {
-    nextqEl.classList.add('hidden');
-  }
-
-  // mark done
+  const ev=EVIDENCE[idx];
+  document.getElementById('clue-empty').style.display='none';
+  const cr=document.getElementById('clue-reveal');
+  cr.className='clue-reveal show';
+  document.getElementById('cr-type').textContent=ev.type;
+  document.getElementById('cr-title').textContent=ev.name;
+  const card=document.getElementById('cr-card');
+  card.innerHTML=ev.body;
+  card.className=ev.isKey?'evidence-card key-evidence':'evidence-card';
+  const quoteEl=document.getElementById('cr-quote');
+  if(ev.quote){quoteEl.textContent=ev.quote;quoteEl.classList.remove('hidden');}
+  else quoteEl.classList.add('hidden');
+  const nextqEl=document.getElementById('cr-nextq');
+  if(ev.nextq){document.getElementById('cr-nextq-text').textContent=ev.nextq;nextqEl.classList.remove('hidden');}
+  else nextqEl.classList.add('hidden');
   evDone.add(idx);
-  const el = document.getElementById(`ev-${idx}`);
+  const el=document.getElementById(`ev-${idx}`);
   el.classList.add('ev-open');
-  setTimeout(()=>{ el.classList.remove('ev-open'); el.classList.add('ev-done'); }, 700);
-  document.getElementById(`em-${idx}`).textContent = '✓';
-
-  // dot
-  const pd = document.getElementById(`pd-${evDotIdx}`);
-  if(pd){ pd.style.background=dotColors[idx]; pd.textContent='✓'; pd.style.fontSize='11px'; }
+  setTimeout(()=>{el.classList.remove('ev-open');el.classList.add('ev-done');},700);
+  document.getElementById(`em-${idx}`).textContent='✓';
+  const pd=document.getElementById(`pd-${evDotIdx}`);
+  if(pd){pd.style.background=dotColors[idx];pd.textContent='✓';pd.style.fontSize='11px';}
   evDotIdx++;
-
-  // all done
-  if(evDone.size === EVIDENCE.length) {
+  if(evDone.size===EVIDENCE.length){
     document.getElementById('btn-all-done').classList.remove('hidden');
     document.getElementById('btn-next').classList.add('hidden');
   }
 }
 
-function goWhys() {
-  whyCur = 0;
-  cur = SCREENS.indexOf(`s-why-0-vote`);
+function goWhys(){
+  cur=SCREENS.indexOf('s-why-0-vote');
   show(cur);
 }
 
-// ── WHY REVEAL ──
-function revealWhy() {
-  const screenId = SCREENS[cur];
-  const m = screenId.match(/s-why-(\d+)-vote/);
-  if(!m) return;
-  const idx = parseInt(m[1]);
-  const w = WHYS_DATA[idx];
-
-  document.querySelectorAll(`#why-opts-${idx} .opt-card`).forEach(card=>{
-    const l = card.querySelector('.opt-letter').textContent.trim();
-    card.classList.add(l===w.ans?'correct':'dim');
-  });
-
-  document.getElementById('btn-reveal-why').classList.add('hidden');
-  document.getElementById('btn-next').classList.remove('hidden');
-  document.getElementById('btn-next').textContent = '查看解析 →';
+let toastTimer=null;
+function showToast(msg,dur=2000){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  if(toastTimer) clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),dur);
 }
 
-// ── FLOW ──
-function buildScreenList() {
-  const base = ['s-cover','s-case','s-inv'];
-  // why screens inserted before s-funnel by buildWhyScreens
-  const rest = ['s-funnel','s-verdict','s-teach1','s-teach2','s-converge','s-closing'];
-  // Build dynamic list by checking DOM order
-  const all = [];
-  document.querySelectorAll('.screen').forEach(s=>{ if(s.id) all.push(s.id); });
+function buildScreenList(){
+  const all=[];
+  document.querySelectorAll('.screen').forEach(s=>{if(s.id) all.push(s.id);});
   return all;
 }
 
-let SCREENS = [];
-let cur = 0;
+let SCREENS=[];
+let cur=0;
 
-// Rebuild after DOM is ready
-setTimeout(()=>{
-  SCREENS = buildScreenList();
-  show(0);
-}, 0);
+setTimeout(()=>{SCREENS=buildScreenList();show(0);},0);
 
-function show(idx) {
+function show(idx){
   if(!SCREENS.length) return;
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  const id = SCREENS[idx];
+  const id=SCREENS[idx];
   if(!id) return;
   document.getElementById(id)?.classList.add('active');
-
-  const bPrev = document.getElementById('btn-prev');
-  const bNext = document.getElementById('btn-next');
-  const bReveal = document.getElementById('btn-reveal-why');
-  const bAllDone = document.getElementById('btn-all-done');
-
-  document.getElementById('slide-info').textContent = `${idx+1} / ${SCREENS.length}`;
-
-  bReveal.classList.add('hidden');
+  const bPrev=document.getElementById('btn-prev');
+  const bNext=document.getElementById('btn-next');
+  const bConfirm=document.getElementById('btn-confirm-vote');
+  const bAllDone=document.getElementById('btn-all-done');
+  document.getElementById('slide-info').textContent=`${idx+1} / ${SCREENS.length}`;
+  bConfirm.classList.add('hidden');
   bAllDone.classList.add('hidden');
   bNext.classList.remove('hidden');
-  bPrev.classList.toggle('hidden', idx===0);
-
-  if(id==='s-inv') {
+  bPrev.classList.toggle('hidden',idx===0);
+  if(id==='s-inv'){
     bNext.classList.add('hidden');
     if(evDone.size===EVIDENCE.length) bAllDone.classList.remove('hidden');
-  } else if(id && id.endsWith('-vote')) {
-    bReveal.classList.remove('hidden');
+  } else if(id&&id.endsWith('-vote')){
+    bConfirm.classList.remove('hidden');
     bNext.classList.add('hidden');
   } else {
-    bNext.textContent = idx===SCREENS.length-1 ? '完成 🎉' : '繼續 →';
+    bNext.textContent=idx===SCREENS.length-1?'完成 🎉':'繼續 →';
   }
 }
 
-function next(){ if(cur<SCREENS.length-1){cur++;show(cur);} }
-function prev(){ if(cur>0){cur--;show(cur);} }
+function next(){if(cur<SCREENS.length-1){cur++;show(cur);}}
+function prev(){if(cur>0){cur--;show(cur);}}
 
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key===' '){
     e.preventDefault();
-    const bReveal=document.getElementById('btn-reveal-why');
+    const bConfirm=document.getElementById('btn-confirm-vote');
     const bNext=document.getElementById('btn-next');
-    if(!bReveal.classList.contains('hidden')) revealWhy();
+    if(!bConfirm.classList.contains('hidden')) confirmVote();
     else if(!bNext.classList.contains('hidden')) next();
   }
   if(e.key==='ArrowLeft') prev();
